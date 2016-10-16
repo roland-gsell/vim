@@ -25,8 +25,6 @@
 " ... Restart terminal! ...
 
 set nocompatible
-filetype on
-
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
@@ -51,17 +49,21 @@ filetype plugin indent on
 " The rest of your config follows here
 
 
-
-
-
-augroup vimrc_autocmds
-    autocmd!
-"    highlight characters past column 120
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%120v.*/
-    autocmd FileType python set nowrap
-    augroup END
-
+if has("autocmd")
+    filetype on
+    autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
+    augroup vimrc_autocmds
+        autocmd!
+        " Zeichen nach Spalte 120 hervorheben
+        autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+        autocmd FileType python match Excess /\%120v.*/
+        autocmd FileType python set nowrap
+        augroup END
+    " rss und atom-Files wie XML behandeln
+    autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+    " Python und Javascript von Leerraum-Zeichen am Ende der Zeilen befreien
+    autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+endif
 
 " Airline Config
 set laststatus=2
@@ -73,11 +75,11 @@ set encoding=utf-8
 " NerdTree
 " map <F2> :NERDTreeToggle<CR>
 
-" Ich bevorzuge Spaces statt Tabs
+" Standard-Einrückung
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 " History auf 200 setzen - default ist nur 50
 " Die History wird ueber mehrere vim-Sessions hinweg gespeichert.
@@ -129,6 +131,19 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+nnoremap <silent> <F6> :call <SID>StripTrailingWhitespaces()<CR>
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
 " Den &-Befehl reparieren (die Flags der letzten Substitution berücksichtigen)
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
@@ -139,11 +154,18 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Veränderte Buffer automatisch auf hidden setzen
 set hidden
 
+" Whitespace wird per default angezeigt
+set list
+
 " Listchars anpassen
 set listchars=tab:▸\ ,eol:¬
-highlight SpecialKey guifg=#4a4a59
+" highlight SpecialKey guifg=#4a4a59
 " highlight NonText guifg=#4a4a59
-highlight NonText ctermfg=0
+highlight SpecialKey ctermfg=8
+highlight NonText ctermfg=8
+		
+" Suche mit hohem Kontrast
+highlight Search ctermbg=11, ctermfg=0
 
 " Leader auf ö setzen:
 let mapleader="ö"
