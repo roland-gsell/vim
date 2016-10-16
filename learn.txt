@@ -1,0 +1,947 @@
+vim -u NONE -N
+    -u NONE     vim ohne .vimrc laden - das heißt es werden auch keine Plugins geladen und viele nützliche Features deaktiviert.
+    -N          verhindert dass vim in den Kompatibiliätsmodus mit vi fällt, indem es "nocompatible" setzt. Dadurch bleiben die vim-Features bestehen.
+
+essential.vim:
+
+    set nocompatible
+    filetype plugin on
+
+vim -u essential.vim
+                Dadurch werden noch einige von Vims eingebauten Features aktiviert, die mit Vim-Script implementiert sind.
+
+
+vim --version
+:version
+                Zeigt mit welchen Optionen vim kompiliert wurde.
+
+
+====================================
+MIT BEWEGUNGEN IN DATEIEN NAVIGIEREN
+====================================
+
+h,j,k,l
+
+gg      An den Anfang springen
+G       Ans Ende springen
+[N]%    zu einem bestimmten Prozentsatz der Dateilänge springen
+[N]G    Zu Zeile [N] springen
+/Muster Zum nächsten Vorkommen von Muster springen
+n       Weiter in die gleiche Richtung suchen
+?Muster Zum vorhergehenden Vorkommen von Muster springen
+N       In die entgegengesetzte Richtung weitersuchen
+( / )   Zum Anfang der nächsten/vorigen Satzes springen
+{ / }   Zum Anfang des nächsten/vorigen Absatzes springen
+H/M/L   Zum oberen Rand / zur Mitte / zum unteren Rand des Bildschirms springen
+gf      Zu der unter dem Cursor angegebenen Datei springen
+'m/`m    Zu einer Marke springen
+
+    In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist, the two existing as personalities independent and resenting of the other. Following his accidental exposure to gamma radiation during the detonation of an experimental bomb, Banner is physically transformed into the Hulk when subjected to emotional stress, at or against his will, often leading to destructive rampages and conflicts that complicate Banner's civilian life.
+
+    Lee said that the Hulk's creation was inspired by a combination of Frankenstein and Dr. Jekyll and Mr. Hyde.[4] Although the Hulk's coloration has varied throughout the character's publication history, the most usual color is green. He has two main catchphrases: "Hulk is strongest one there is!" and the better-known "HULK SMASH!", which has founded the basis for numerous pop culture memes.
+
+
+Befehl      Cursorbewegung
+------------------------------------------------------------
+j           eine echte Zeile nach unten
+gj          eine Anzeigezeile nach unten
+k           eine echte Zeile nach oben
+gk          eine Anzeigezeile nach oben
+0           zum Anfang der echten Zeile
+g0          zum Anfang der Anzeigezeile
+^           zum ersten nicht-leeren Zeichen der echten Zeile
+g^          zum ersten nicht-leeren Zeichen der Anzeigezeile
+$           zum Ende der echten Zeile
+g$          zum Ende der Anzeigezeile
+
+
+Wortweise bewegen
+-----------------
+
+Befehl      Cursorbewegung
+-------------------------------------------------------------------
+w           Vorwärts zum Anfang des nächsten Wortes
+b           Rückwärts zum Anfang des aktuellen/vorangehenden Wortes
+e           Vorwärts zum Ende des aktuellen/nächsten Wortes
+ge          Rückwärts zum Ende des vorangehenden Wortes
+
+Wörter und WÖRTER ...
+
+z.B. war's recht kalt heute
+
+Suche nach Zeichen
+------------------
+
+Befehl          Effekt
+--------------------------------------------------------------------------------
+f{Zeichen}      Vorwärts zum nächsten Vorkommen von {Zeichen}
+F{Zeichen}      Rückwärts zum vorangehenden Vorkommen von {Zeichen}
+t{Zeichen}      Vorwärts zu dem Zeichen vor dem nächsten Vorkommen von {Zeichen}
+T{Zeichen}      Rückwärts hinter das vorangehende Vorkommen von {Zeichen}
+;               Den letzten Zeichensuchbefehl wiederholen
+,               Den letzten Zeichensuchbefehl in die andere Richtung wiederholen
+
+
+Ich habe Sie erwartet, Mister Bond.
+
+f,dt.
+
+Denken wie ein Scrabble-Spieler
+
+Verbessern Sie Ihr Schreiben, indem Sie exzellente Adjektive löschen.
+
+fxdaw
+
+Diese Aussage ist umständlich, aber kommt auf den Punkt.
+
+Suche im visuellen Modus:
+fi;v/ko<CR>hd
+
+Suche im Operator-ausstehend-Modus
+fi;d/ko<CR>
+
+Suche mit incsearch. Aktivieren mit:
+:set incsearch
+
+Springt dann während der Sucheingabe zum nächsten Vorkommen. Kann mit <Esc> abgebrochen werden, um zur ursprünglichen Cursorposition zurückzuspringen.
+
+
+Operationen auf Textobjekten ausführen
+--------------------------------------
+
+v{Textobjekt}
+oder natürlich auch:
+d{Textobjekt}, c{Textobjekt}, y{Textobjekt}
+
+Textobjekt      Auswahl
+----------------------------------------------------------------
+a) oder ab      Ein (Klammernpaar)
+i) oder ib      Inhalt eines (Klammernpaars)
+a} oder aB      Ein Paar {geschweifter Klammern}
+i} oder iB      Inhalt eines Paars {geschweifter Klammern}
+a]              Ein Paar [eckiger Klammern]
+i]              Inhalt eines Paars [eckiger Klammern]
+a>              Ein Paar <spitze Klammern>
+i>              Inhalt eines Paars <spitze Klammern>
+a'              Ein Paar 'einfache Anführungszeichen'
+i'              Inhalt eines Paars 'einfacher Anführungszeichen'
+a"              Ein Paar "doppelte Anführungszeichen"
+i"              Inhalt eines Paars "doppelter Anführungszeichen"
+a`              Ein Paar `Backticks`
+i`              Inhalt eines Paars `Backticks`
+at              Ein Paar <xml>tags</xml>
+it              Inhalt eines Paares von <xml>tags</xml>
+
+iw              Aktuelles Wort
+aw              Aktuelles Wort plus ein Leerzeichen
+iW              Aktuelles WORT
+aW              Aktuelles WORT plus ein Leerzeichen
+is              Aktueller Satz
+as              Aktueller Satz plus ein Leerzeichen
+ip              Aktueller Absatz
+ap              Aktueller Absatz plus eine Leerzeile
+
+siehe:
+:h text-objects
+
+Häufig in Verwendung:
+daw
+ciw
+
+Eine Position markieren und wieder zu ihr zurückkehren
+------------------------------------------------------
+
+m{a-zA-Z}       markiert eine Position
+'{a-zA-Z}       springt zur Marke
+
+Großbuchstaben: globale Marken!
+
+Die automatischen Marken in Vim:
+
+''      Die Position vor dem letzten Sprung in der aktuellen Datei
+'.      Die Position der letzten Änderung
+'^      Die Position der letzten Einfügung
+'[      Der Anfang der letzten Änderung oder Kopieraktion
+']      Das Ende der letzten Änderung oder Kopieraktion
+'<      Der Anfang der letzten visuellen Auswahl
+'>      Das Ende der letzten visuellen Auswahl
+
+Zwischen zueinandergehörigen Klammern hin- und herspringen:
+-----------------------------------------------------------
+
+%
+
+console.log([{'a':1},{'b':2}])
+
+f(%h%l%
+
+
+==============
+NORMALER MODUS
+==============
+
+
+
+Abkürzungen für gängige Operationen:
+
+Kurzform  | längere Variante
+---------------------------
+C         | c$
+s         | cl
+S         | ^C
+I         | ^I
+A         | $a
+o         | A<CR>
+O         | ko
+
+
+var foo = 1
+var bar = 'a'
+var foobar = foo + bar
+var i = 2
+
+A;<Esc>j.
+
+
+var foo = "method("+argument1+","+argument2+")";
+
+f+s + <Esc>;.
+
+
+
+... Seine Lehre absolvierte er bei einem Meisterschmied ...
+... Fehler waren ihm eine Lehre, die er nie vergaß ...
+... Nach dem Abschluss der Lehre begann er die Suche nach dem Meisterschwert ...
+
+:%s/Lehre/Ausbildung/g
+
+*cwAusbildung<Esc>n.
+
+:%s/Lehre/Ausbildung/gc
+
+
+innodb_flush_method = O_DIRECT
+innodb_buffer_pool_size = 5000M          # Wenn MySQL auf Eigenstaendige Maschine lauft -> 50-80%, ansonsten 25%
+innodb_log_file_size = 1250MB             # 25% des innodb_puffer_pool_size
+innodb_log_buffer_size = 300M             # 25% von innodb_log_file_size
+max_allowed_packet = 50M
+max_connections = 500
+query_cache_size = 32MB
+innodb_file_per_table
+
+
+.blog, .news, .head { background-image: url(/sprite.png); }
+.blog { background-position: 0px 0px }
+.news { background-position: -180px 0px }
+.head { background-position: -360px 0px }
+
+
+180<C-a>
+
+
+007
+
+:set nrformats=
+              ?
+              -=bin
+0x009
+0b001
+
+
+c           Veränderung
+d           Löschen
+y           "yank" - in Register herausziehen
+g~          Groß-/Kleinschreibung ändern (einzelnes Zeichen:  ~)
+gu          in Kleinbuchstaben ändern
+gU          In Großbuchstaben ändern
+>           Nach rechts verschieben
+<           Nach links verschieben
+=           Automatischer Einzug
+!           (Bewegung-)Zeilen durch externes Programm filtern
+
+
+aw          a word
+as          a sensence
+ap          a paragraph
+
+Doppelt:    eine Zeile
+Kurzformen:
+gUgU        gUU
+gugu        guu
+g~g~        g~~
+
+Link also enters this mode when attacked by wandering monsters. Whenever the player traverses the various environments of Hyrule, enemy silhouettes appear and pursue him. Of the three random creatures that appear, there are three types which correspond to the relative difficulty of the monsters in battle mode: a small, weak blob denoting easy enemies, a large, strong biped denoting harder enemies, and a Fairy, which will put Link on a single screen with a free Fairy to refill his health.
+
+gU2as
+
+=============
+EINFÜGE-MODUS
+=============
+
+<C-h>       Ein Zeichen zurück löschen (Backspace)  ┐ 
+<C-w>       Ein Wort zurück löschen                 ├─  funktioniert auch im Kommandozeilenmodus
+<C-u>       Bis zum Zeilenanfang zurück löschen     ┘
+
+<Esc>       In den Normalmodus zurück
+<C-[>       - " -
+<C-c>       - " -
+<C-o>       In den Einfüge-Normalmodus wechseln
+
+Beispiel: <C-o>zz
+
+
+Vim in der Praxis von Drew Neil
+Lesen Sie Drew Neils 
+
+yfs jA <C-r>0 . <Esc>
+
+siehe auch :reg 
+
+Kleine Berechnungen vor Ort:
+
+Fa. Wimmer - Preisliste
+-----------------------
+6 Stühle für jeweils € 658, insgesamt   € 
+8 Tische für jeweils € 902, insgesamt   € 7216
+Summe                                   € 
+
+A <C-r>= 6*658 >CR>
+
+Ungewöhnliche Zeichen:
+
+Dezimalcode (nur 3stellig!):
+<C-v>065
+Hexcode für den gesamten Unicode Basic Multilingual Plane:
+<C-v>u00bf
+Backtick: <C-v>096
+
+♪♫
+
+Herausfinden welchen Code ein Zeichen im Text hat:
+ga
+
+<C-v><TAB>      fügt immer ein TAB ein, auch wenn expandtab gesetzt ist
+
+Digraphen:
+
+<C-k>DO
+<C-k>12
+<C-k>m*
+<C-k>'!
+
+:h digraphs-default
+:h digraphs
+:h digraph-table
+
+:h <C-r><C-w>     aktuelles Wort in die Befehlszeile
+:h <C-r><C-a>     aktuelles WORT in die Befehlszeile
+
+Ersetzungsmodus:
+
+Die Eingabe im Einfügemodus erweitert die Zeile. Im Ersetzungsmodus
+hingegen erweitert sich die Zeilelänge nicht.
+
+f.  R, i<Esc>
+
+Einweg-Version: r
+
+Virtueller Ersetzungsmodus:
+gR
+oder: gr
+behandelt Tabulatorzeichen als beständen sie aus Leerzeilen. Sprich: er überschreibt Bildschirmzeichen.
+
+
+===============
+VISUELLER MODUS
+===============
+
+v       zeichenbasierter visueller Modus
+V       zeilenbasierter visueller Modus
+<C-v>   blockbasierter visueller Modus
+gv      den zuletzt gewählten visuellen Modus wieder auswählen
+o       zum anderen Ende des markierten Bereichs springen
+
+nocheinmal denselben Modus wählen: Modus wieder verlassen. (oder: <Esc>, <C-[>, <C-c>)
+in visuellen Modus einen anderen visuellen Modus wählen:    diesen anwählen.
+<C-g>       vom visuellen Modus in den Auswahl-Modus wechseln
+
+Direkt in den Auswahl-Modus wechseln:
+gh, gH, g<C-h>
+
+
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+print a,
+a, b = b, a+b
+fib(42)
+
+
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print a,
+        a, b = b, a+b
+fib(42)
+
+
+Vj>.
+?def<CR>V5j:!python
+
+Schwächen des virtuellen Modus:
+
+<a href="#">gelb</a>
+<a href="#">blau</a>
+<a href="#">orange</a>
+
+vit
+U
+j.j.
+
+gUit
+j.j.
+
+Kapitel                     Seite
+normaler Modus              15
+Einfuege-Modus              31
+Visueller Modus             44
+
+
+Kapitel             |  Seite
+----------------------------
+normaler Modus      |  15
+Einfuege-Modus      |  31
+Visueller Modus     |  44
+
+
+<C-v>3jx...gvr|
+yypjVr-
+
+
+li.one   a{ background-image: url('/images/sprite.png'); }
+li.two   a{ background-image: url('/images/sprite.png'); }
+li.three a{ background-image: url('/images/sprite.png'); }
+
+
+li.one   a{ background-image: url('/components/sprite.png'); }
+li.two   a{ background-image: url('/components/sprite.png'); }
+li.three a{ background-image: url('/components/sprite.png'); }
+
+f/l<C-v>jjec
+components<Esc>
+
+
+var foo = 1
+var bar = 'a'
+var foobar = foo + bar
+var i = 2
+
+<C-v>3j$A;<Esc>
+
+
+====================
+KOMMANDOZEILEN-MODUS
+====================
+
+Das alte Testament nach Unix
+----------------------------
+
+Am Anfang war ed. ed zeugte em, und em zeugte en, und en zeugte ex, und ex zeugte vi, und vi zeugte Vim.
+
+siehe: 
+practical-vim.html
+
+
+<html>
+  <head><title>Vim in der Praxis</title></head>
+  <body><h1>Vim in der Praxis</h1></body>
+</html>
+
+Einen Zeilenbereich über Muster angeben:
+
+:/<html>/,/<\/html>/p
+:/<html>/+1,/<\/html>/-1p
+
+Syntax für die Definition von Bereichen:
+
+Zeichen  |  Adresse
+--------------------------------------------------------------
+1        |  Erste Zeile der Datei
+$        |  Letzte Zeile der Datei
+0        |  Virtuelle Zeile über der ersten Zeile der Datei
+.        |  Die Zeile, auf der sich der Cursor befindet
+'m       |  Die Zeile, die die Marke m enthält
+'<       |  Anfang der visuellen Auswahl
+'>       |  Ende der visuellen Auswahl
+%        |  Die gesamte Datei (kurz für :1,$)
+
+
+To-Do-Liste
+    Luxbau
+        Owncloud-Server joinen
+    Henry am Zug
+        Fernwartung über LDAP starten
+        Robert Bericht erstatten
+
+
+:3copy.
+:3co.
+:3t.
+:/Rob/t.
+
+
+Befehl      |   Effekt
+------------------------------------------------------------------------------------
+:6t.        |   Zeile 6 kopieren und unter der aktuellen Zeile einfügen
+:t6         |   Aktuelle Zeile kopieren und unter Zeile 6 einfügen
+:t.         |   == yyp
+:t$         |   Aktuelle Zeile kopieren und am Ende der Datei einfügen
+:'<,'>t0    |   Visuell ausgewählte Zeilen kopieren und am Anfang der Datei einfügen
+
+
+:move
+:mo
+:m
+
+?Lux<CR>Vj:m.+5
+
+
+Befehle des normalen Modus über einen Bereich ausführen:
+
+ggA;<Esc>
+jVG
+:'<,'>:normal .
+
+:%normal A;
+
+:%normal i//
+
+Letzten Ex-Befehl wiederholen:          @:
+Wenn das einmal ausgeführt wurde, kann @@ verwendet werden.
+
+
+Auto-Vervollständigung:
+----------------------
+
+:col<C-d>
+colder      colorscheme
+
+Standard-Verhalten von Tab wie in der Powershell:
+
+:col<Tab><Tab>
+:colorscheme
+
+:colorscheme <C-d>
+blue       default    desert     evening    koehler    murphy     peachpuff  shine      torte
+darkblue   delek      elflord    industry   morning    pablo      ron        slate      zellner
+
+:w! Filenam<Tab>
+
+Mehr Informationen dazu:
+:h :command-complete
+
+Mögliche Einstellungen in der .vimrc:
+
+" Tab-Vervollstaendigung wie in der bash
+set wildmode=longest,list
+
+" Alternative Tab-Vervollstaendigung wie in der zsh:
+set wildmenu
+set wildmode=full
+
+<C-r><C-w>      Das aktuelle Wort in die Eingabeaufforderung einfügen
+<C-r><C-a>      Das aktuelle WORT in die Eingabeaufforderung einfügen
+
+
+var tally;
+for (tally=1; tally <= 10; tally++) {
+  // etwas mit tally anstellen
+};
+
+Cursor auf tally
+*
+cw counter<Esc>
+:%s//<C-r><C-w>/g
+
+Praktisch in der .vimrc:
+:h <C-r><C-w>
+
+
+Befehle aus dem Befehlsverlauf wieder aufrufen:
+-----------------------------------------------
+
+vorheriger Befehl:          :<Hoch>     oder    :<C-p>
+nächster Befehl:            :<Runter>   oder    :<C-n>
+
+Standard-History in Vim: 50 (früher 20)
+Sie wird Session-übergreifend gespeichert
+Erhöhen mit:
+
+set history=200
+
+
+Das Kommandozeilenfenster
+-------------------------
+
+:write
+:!ruby %
+
+:write | !ruby %
+
+q:
+
+kkA |<Esc>J:s/write/update
+
+Befehl wird im Kontext des aktuellen Fensters ausgeführt. Das ist jenes Fenster, welches aktiv war, als das Kommandozeilenfenster geöffnet wurde. Vim gibt keinen Hinweis darauf, welches Fenster das aktive ist, wenn das Kommandozeilenfenster geöffnet ist -> Aufpassen, wenn geteilte Fenster verwendet werden!
+
+Befehl   |  Aktion
+---------------------------------------------------------------------------
+q/       |  Das Kommandozeilenfenster mit dem Suchverlauf öffnen
+q:       |  Das Kommandozeilenfenster mit dem Verlauf der Ex-Befehle öffnen
+<C-f>    |  Vom Kommandozeilenmodus ins Kommandozeilenfenster wechseln
+
+
+Befehle in der Shell ausführen
+------------------------------
+
+:!ls
+
+:r !ls
+
+:!python %
+
+:shell
+pwd
+ls
+exit
+
+Was machen folgende Befehle?
+:write !sh
+:write ! sh
+:write! sh
+
+Schönes Beispiel unter:
+:h rename-files
+
+Den Inhalt eines Puffers durch einen externen Befehl filtern
+------------------------------------------------------------
+
+Der Befehl :!{Befehl} erhält eine andere Bedeutung, wenn ihm ein [Bereich] übergeben wird.
+Die Zeilen, die durch [Bereich] angegeben werden, werden als Standardeingabe für {Befehl} verwendet,
+und dann überschreibt die Ausgabe von {Befehl} den ursprünglichen Inhalt von [Bereich].
+
+
+Vorname,Nachname,Email
+john,smith,john@example.com
+drew,neil,drew@vimcasts.org
+jane,doe,jane@example.com
+
+
+Vjj:!sort -t',' -k2
+
+Noch kürzer mit !{Bewegung}, z.B.:
+!G
+!2j
+
+Befehl                      |   Effekt
+--------------------------------------------------------------------------------------------------------------
+:shell                      |   eine Shell starten (zu Vim mit exit zurück) - oder: <C-z> Befehle ... fg
+:!{Befehl}                  |   {Befehl} in der Shell ausführen
+:read !{Befehl}             |   {Befehl} in der Shell ausführen und die Ausgabe unter dem Cursur einfügen
+:[Bereich]write !{Befehl}   |   {Befehl} in der Shell ausführen mit den Zeilen in [Bereich] als Standardeingabe
+:[Bereich]!{Filter}         |   Den angegebenen [Bereich] durch das externe Programm {Filter} filtern
+
+
+
+# /etc/fstab: static file system information.
+#
+# <file system>                                 <mount point>   <type>  <options>           <dump>  <pass>
+UUID=                                           /               ext4    errors=remount-ro   0       1
+UUID=A10C-0F32                                  /boot/efi       vfat    umask=0077          0       1
+UUID=4b2077dd-74c4-4774-a9ae-1a3ddfccde12       none            swap    sw                  0       0
+UUID="bec10561-9ab1-4f81-9e18-6fc3c1be14e1"     /mnt/share      ext4    errors=remount-ro   0       1
+
+
+:r!blkid /dev/sda1 | cut -d '"' -f 2
+
+
+=========================
+MEHRERE DATEIEN VERWALTEN
+=========================
+
+Die meisten Vim-Befehle operieren auf Puffern, nur einige wenige operieren auf Dateien, u.a. die Befehle
+:write, :update, :saveas
+
+Die Pufferliste
+---------------
+
+vim *.txt
+< 2 files to edit
+
+:ls
+:bnext
+:bprev
+:bfirst
+:blast
+
+:buffer N
+:buffer {Puffername}
+
+%   aktuell sichtbarer Puffer
+#   alternativer Puffer
+
+Für die .vimrc:
+
+" Zum alternativen Puffer springen
+nmap <leader>a <C-^>
+
+Aktuellen Puffer löschen:
+:bdelete    oder    :bd
+
+Puffer 5-10 löschen:
+:5,10bd
+
+Puffer 5,6,9 löschen:
+:bd 5 6 9
+
+Dies wirkt sich nicht auf die Datei aus!
+Bei Änderungen muss an :bd natürlich noch ein ! angehängt werden.
+
+Befehl       |  Effekt
+------------------------------------------------------------------------------
+:w[rite]     |  Inhalt des Puffers auf die Festplatte schreiben
+:e[dit]!     |  Inhalt der Datei von der Festplatte erneut in den Puffer laden
+:qa[ll]!     |  Alle Fenster schließen, Änderungen ohne Warnungen verwerfen
+:wa[ll]      |  Alle veränderten Puffer auf der Festplatte speichern
+
+
+Arbeitsbereich in Fenster teilen
+--------------------------------
+
+Befehl              Effekt
+-------------------------------------------------------------------------------------------------------------------
+<C-w>s              "split" - Teilt das aktuelle Fenster horizontal und nutzt den aktuellen Puffer im neuen Fenster
+<C-w>v              "vertical split" - Teilt das aktuelle Fenster vertikal und    - " -
+:sp[lit] {Datei}    Teilt das aktuelle Fenster und lädt {Datei} in das neue Fenster
+:vsp[lit] {Datei}   Teilt das aktuelle Fenster vertikal und   - " -
+
+Den Fokus zwischen den Fenstern verschieben:
+
+Befehl              Effekt
+-----------------------------------------------------------------------------
+<C-w>w              Offene Fenster durchlaufen. <C-w><C-w> funktioniert auch.
+<C-w>h,j,k,l        Zum entsprechenden Fenster springen.
+
+
+Fenster schließen:
+
+Ex-Befehl       Befehl im normalen Modus        Effekt
+----------------------------------------------------------------------------------------------------------
+:cl[ose]        <C-w>c                          das aktive Fenster schließen
+:on[ly]         <C-w>o                          nur das aktive Fenster behalten und alle anderen schließen
+
+Anordnung und Größe von Fenstern ändern
+
+Tastenaktion    Pufferinhalt
+------------------------------------------------------------------------
+<C-w>=          Größe und Höhe aller Fenster ausgleichen
+<C-w>_          Höhe des aktuellen Fensters maximieren
+<C-w>|          Breite des aktuellen Fenstern maximieren
+[N]<C-w>_       Die Höhe des aktuellen Fensters auf [N] Zeilen setzen
+[N]<C-w>|       Die Breite des aktuellen Fensters auf [N] Spalten setzen
+
+
+Fensterlayouts in Tabs organisieren
+-----------------------------------
+
+Befehl                      Effekt
+------------------------------------------------------------------------------------------------
+:tabe[dit] {Dateiname}      Öffnet {Dateiname} in einem neuen Tab.
+<C-w>T                      Verschiebt das aktuelle Fenster in einen eigenen Tab.
+:tabc[lose]                 Schließt die aktuelle Tab-Seite und alle in ihr enthaltenen Fenster.
+:tabo[nly]                  Behält die aktive Tab-Seite und schließt alle anderen.
+
+
+Ex-Befehl           normaler Modus      Effekt
+----------------------------------------------------------------------------
+:tabn[ext] {N}      {N}gt               Zur Tab-Seite {N} wechseln
+:tabn[ext]          gt                  Zur nächsten Tab-Seite wechseln
+:tabp[revious]      gT                  Zur vorangehenden Tab-Seite wechseln
+:tabm[ove] {N}                          Tab verschieben
+
+Wenn man bei :tabmove das N wegläßt wird der Tab ans Ende verschoben, mit N=0 an den Anfang.
+
+Session speichern:
+:mksession {Dateiname}
+
+Wird der Dateiname weggelassen, wird Session.vim verwendet.
+Session wieder herstellen:
+:source {Dateiname}
+
+oder beim Start von vim:
+vim -S {Dateiname}
+
+Dateien in nicht vorhandenen Verzeichnissen abspeichern
+-------------------------------------------------------
+
+:edit made/up/dir/doesnotexist.yet
+:write
+
+:!mkdir -p %:h
+:write
+
+siehe auch:
+:h expand
+:echo expand('%:h')
+
+
+=====================
+KOPIEREN UND EINFÜGEN
+=====================
+
+
+Vi min der Praxis
+
+Zeichen vertauschen: xp
+
+2) Zeile zwei
+1) Zeile eins
+3) Zeile drei
+
+Zeilen vertauschen: ddp
+
+Zeilen verdoppelt: yyp
+
+Mist, ich habe meine Kopie verhunzt!
+------------------------------------
+
+collection = getCollection();
+process(somethingInTheWay, target);
+
+yiw
+jww
+diw
+P
+
+
+Das unbenannte Register ""
+--------------------------
+
+x, s, d{Bewegung}, c{Bewegung}, y{Bewegung} (und ihre Äquivalente in Großbuchstaben) setzen alle das unbenannte Register.
+Man kann dieses Register explizit nutzen: ""p  - aber das macht nichts anderes als p
+
+Das Kopierregister "0
+---------------------
+
+Wird nur durch "yank" gesetzt.
+Lösung 1:       "0P
+
+Die benannten Register "a - "z
+------------------------------
+
+Lösung 2:
+"ayiw
+jww
+diw
+"aP
+
+Das schwarze Loch-Register "_
+-----------------------------
+
+Lösung 3:
+yiw
+jww
+"_diw
+P
+
+Weitere Register:
+Die Systemzwischenablage        "+      Die X11-Zwischenablage, die mit Ausschneiden, Kopieren und Löschen verwendet wird
+Das Auswahlregister             "*      Die X11-Primär-Zwischenablage, die mit der mittleren Maustaste abgerufen wird
+        für beide muss Vim mit xterm_clipboard kompiliert worden sein (siehe :version)
+Name der aktuellen Datei        "%
+Name der alternativen Datei     "#
+Zuletzt eingefügter Text        ".
+Letzter Ex-Befehl               ":
+Letztes Suchmuster              "/
+
+
+Eine visuelle Auswahl durch ein Register ersetzen
+-------------------------------------------------
+
+Lösung 4:
+yiw
+jww
+ve
+p
+
+Hier tauschen wir den Inhalt der visuellen Auswahl mit dem Text im unbenannten Register!
+
+
+Im Einfügemodus ein Register verwenden
+--------------------------------------
+
+Lösung 5:
+yiw
+jww
+ciw<C-r>0<Esc>
+
+<table>
+<tr> <td>Tastenaktionen</td>
+<td>Pufferinhalt</td></tr><tr> <td>Tastenaktionen</td>
+<td>Pufferinhalt</td></tr></table>
+
+
+Interaktion mit der Zwischenablage
+----------------------------------
+
+:set autoindent
+
+[1,2,3,4,5,6,7,8,9,10].each do |n|
+  if n%5==0
+    puts "fizz"
+  else
+    puts n
+  end
+end
+
+
+1,2,3,4,5,6,7,8,9,10].each do |n| 
+  if n%5==0
+      puts "fizz"
+        else
+            puts n
+              end 
+              end
+
+
+:set paste!
+
+.vimrc:
+:set pastetoggle=<f5>
+
+
+======
+Makros
+======
+
+Serielle Ausführung vs. Parallele Ausführung
+--------------------------------------------
+
+#!/bin/bash
+
+ps -ef | grep kopano-dagent >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+ps -ef | grep kopano-gateway >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+ps -ef | grep kopano-ical >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+ps -ef | grep kopano-monitor >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+ps -ef | grep kopano-server >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+# Achtung: Den Spooler nicht vergessen!
+ps -ef | grep kopano-spooler >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then echo 1; else echo 0; fi
+
+0f]a;j
+0f]a;
+
+Seite 180
+
+
+Remote Edit:
+vim scp://remoteuser@server//absolute/path/to/document

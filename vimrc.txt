@@ -1,0 +1,222 @@
+" 
+" INSTALLATION
+"
+" mkdir -p ~/.vim/bundle/Vundle.vim
+" sudo apt-get install git
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" Put .vimrc (this file) in Place (your home directory) ...
+"
+" :PluginInstall
+"
+"
+" Install Powerline Fonts ...
+"
+" wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+" wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+" 
+" mkdir -p ~/.config/fontconfig/conf.d
+" mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+" 
+" xset q
+" sudo mv PowerlineSymbols.otf /usr/share/fonts/X11/misc/
+" fc-cache -vf /usr/share/fonts/X11/misc
+" 
+" ... Restart terminal! ...
+
+set nocompatible
+" filetype off
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Bundle 'klen/python-mode'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'tpope/vim-abolish'
+
+" Bundle 'scrooloose/nerdtree'
+
+" The bundles you install will be listed here
+
+filetype plugin indent on
+
+" The rest of your config follows here
+
+
+
+
+
+augroup vimrc_autocmds
+    autocmd!
+"    highlight characters past column 120
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python match Excess /\%120v.*/
+    autocmd FileType python set nowrap
+    augroup END
+
+
+" Airline Config
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "ravenpower"
+set t_Co=256
+set encoding=utf-8
+
+" NerdTree
+" map <F2> :NERDTreeToggle<CR>
+
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ["pyflakes","pep8"]
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+" automatically change window's cwd to file's dir
+set autochdir
+
+" Ich bevorzuge Spaces statt Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" History auf 200 setzen - default ist nur 50
+" Die History wird ueber mehrere vim-Sessions hinweg gespeichert.
+set history=200
+
+" Tab-Vervollstaendigung wie in der bash
+set wildmode=longest,list
+
+" Alternative Tab-Vervollstaendigung wi in der zsh:
+" set wildmenu
+" set wildmode=full
+
+" Suche hervorheben (highlight search)
+set hlsearch
+
+" Zeilennummerierung einschalten:
+set number
+
+" Treffenhervorhebung temporär unterdrücken
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" Inkrementelle Suche aktivieren
+set incsearch
+
+" Für Anfänger: Cursortasten deaktivieren
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+
+" nelstrom/vim-visual-star-search
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+" nelstrom/vim-qargs
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
+" Den &-Befehl reparieren (die Flags der letzten Substitution berücksichtigen)
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" Einfache Expansion des Verzeichnisses der aktiven Datei
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Leader auf ö setzen:
+let mapleader="ö"
+
+" Use <leader>l to toggle display of whitespace
+nmap <leader>w :set list!<CR>
+
+" Schnell runter und rauf
+nmap <leader>j Lzz
+nmap <leader>k Hzz
+
+" Leerzeilen in Normal Mode einfügen
+nmap <leader>ö o<Esc>
+
+" Zum alternativen Puffer springen
+nmap <leader>a <C-^>
+
+" Treffen zählen
+nmap <leader>h :%s///gn<CR>
+
+" Neue Files im selben Verzeichnis öffnen:
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Puffer schneller durchlaufen
+nnoremap <silent> <leader>n :bnext<CR>
+nnoremap <silent> <leader>p :bprevious<CR>
+nnoremap <silent> <leader>f :bfirst<CR>
+nnoremap <silent> <leader>l :blast<CR>
+
+" Zeilennummerierung hin- und herschalten
+nmap <leader>z :set nu!<CR>
+
+" Aus der Zwischenablage einfügen - Vim mit F5 vorbereiten
+:set pastetoggle=<f5>
+
