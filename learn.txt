@@ -945,3 +945,9 @@ Seite 180
 
 Remote Edit:
 vim scp://remoteuser@server//absolute/path/to/document
+
+Strip Trailing Spaces:
+:%s/\s\+$//e
+
+Strip blank lines:
+:g/^$/d

@@ -25,7 +25,7 @@
 " ... Restart terminal! ...
 
 set nocompatible
-" filetype off
+filetype on
 
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -37,8 +37,6 @@ Bundle 'gmarik/vundle'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
-Bundle 'klen/python-mode'
 
 Plugin 'tpope/vim-surround'
 
@@ -75,50 +73,6 @@ set encoding=utf-8
 " NerdTree
 " map <F2> :NERDTreeToggle<CR>
 
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checkers = ["pyflakes","pep8"]
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
-
-" automatically change window's cwd to file's dir
-set autochdir
-
 " Ich bevorzuge Spaces statt Tabs
 set tabstop=4
 set softtabstop=4
@@ -132,7 +86,7 @@ set history=200
 " Tab-Vervollstaendigung wie in der bash
 set wildmode=longest,list
 
-" Alternative Tab-Vervollstaendigung wi in der zsh:
+" Alternative Tab-Vervollstaendigung wie in der zsh:
 " set wildmenu
 " set wildmode=full
 
@@ -182,10 +136,19 @@ xnoremap & :&&<CR>
 " Einfache Expansion des Verzeichnisses der aktiven Datei
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Veränderte Buffer automatisch auf hidden setzen
+set hidden
+
+" Listchars anpassen
+set listchars=tab:▸\ ,eol:¬
+highlight SpecialKey guifg=#4a4a59
+" highlight NonText guifg=#4a4a59
+highlight NonText ctermfg=0
+
 " Leader auf ö setzen:
 let mapleader="ö"
 
-" Use <leader>l to toggle display of whitespace
+" Use <leader>w to toggle display of whitespace
 nmap <leader>w :set list!<CR>
 
 " Schnell runter und rauf
