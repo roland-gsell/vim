@@ -237,7 +237,7 @@ innodb_file_per_table
 
 
 180<C-a>
-
+Achtung in screen-Sessions mit Ctrl-A !
 
 007
 
@@ -924,6 +924,25 @@ end
 Makros
 ======
 
+
+Befehl			Wirkung
+-------------------------------------------------------------------------------
+q[a-z]			Aufnahme starten. Achtung! Dies überschreibt benannte Register!
+q				Aufnahme beenden, wenn sie gerade läuft
+@[a-z]			Befehlsfolge wieder abspielen
+@@				zuletzt verwendete Befehlsfolge wieder abspielen
+q[A-Z]			Etwas an eine bestehende Aufnahme anhängen
+
+
+Vorgehensweise
+--------------
+
+1) Cursorposition normalisieren
+	z.B. mit 0, n oder gg
+2) Ziel mit wiederholbaren Bewegungen treffen
+	z.B. wortbasierte Bewegungen: w, b, e, ge oder f{Zeichen} oder Textobjekte nutzen
+
+
 Serielle Ausführung vs. Parallele Ausführung
 --------------------------------------------
 
@@ -940,7 +959,81 @@ ps -ef | grep kopano-spooler >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then 
 0f]a;j
 0f]a;
 
-Seite 180
+Bestehende Makros ändern
+------------------------
+
+Inhalt anzeigen							:reg a
+Inhalt in eine neue Zeile einfügen		:put a
+Zurück ins Register						0"ay$
+
+Achtung mit Tastencodes in Makros - etwa bei Tippfehlern. Diese können etwas irritierend sein. ;-)
+Backspace entspricht dem Code <80>kb
+
+
+Makros mit Zähler abspielen
+---------------------------
+
+var foo = "method("+argument1+","+argument2+")";
+var foo = "method(" + argument1 + "," + argument2 + ")";
+f+s + <Esc>
+;.;.;.
+
+Drei Mal ist noch ok, aber wenn man es öfter ausführen muss kann es zu Arbeit ausarten:
+x = "("+a+","+b+","+c+","+d+","+e+","+f+")";
+
+Es wäre schön den Befehl ;. 11 Mal ausführen zu können. Nur wie?
+11;.
+;11.
+		?? geht beides nicht
+
+Lösung:
+qq;.q
+11@q
+So wird ;. 11 Mal ausgeführt!
+Man könnte hier z.B. auch 22 nehmen - das Makro bricht ohnehin ab, wenn es nichts mehr findet. 
+Wer zählt schon gerne durch?
+
+Übung:
+
+1. doktor manhattan
+2. superman
+3. hulk
+4. thor
+5. green lantern
+6. spider man
+7. batman
+
+Soll werden zu:
+1) Doktor Manhattan
+2) Superman
+...
+ 
+Iterator auswerten, um Elemente einer Liste zu nummerieren
+----------------------------------------------------------
+
+Half-Life
+GTA
+Unreal Tournament
+Star Wars - Knights of the old Republic
+Warcraft III
+World of Warcraft
+
+rudimentäres Vim-Script:
+
+:let i=0
+:echo i
+
+:let i += 1
+:echo i
+
+Makro aufzeichnen:
+:let i=1
+qa
+I<C-r>=i<CR>) <Esc>
+:let i += 1
+q
+
+
 
 
 Remote Edit:
@@ -951,3 +1044,6 @@ Strip Trailing Spaces:
 
 Strip blank lines:
 :g/^$/d
+
+
+Seite 207
