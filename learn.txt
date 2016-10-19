@@ -1,3 +1,8 @@
+=================
+VIM in der Praxis
+=================
+
+
 vim -u NONE -N
     -u NONE     vim ohne .vimrc laden - das heißt es werden auch keine Plugins geladen und viele nützliche Features deaktiviert.
     -N          verhindert dass vim in den Kompatibiliätsmodus mit vi fällt, indem es "nocompatible" setzt. Dadurch bleiben die vim-Features bestehen.
@@ -1034,7 +1039,12 @@ I<C-r>=i<CR>) <Esc>
 q
 
 
+Seite 207
 
+
+=====
+TIPPS
+=====
 
 Remote Edit:
 vim scp://remoteuser@server//absolute/path/to/document
@@ -1046,4 +1056,25 @@ Strip blank lines:
 :g/^$/d
 
 
-Seite 207
+=====
+LINKS
+=====
+
+Die Hauptseite:
+http://www.vim.org/
+
+Tipps & Tricks:
+http://vim.wikia.com/wiki/Vim_Tips_Wiki
+
+Plugin-Sammlung + Installationsanleitungen für alle Plugin-Manager:
+http://vimawesome.com/
+
+Spiel (leider kostenpflichtig - Level 1-3 ist gratis spielbar):
+http://vim-adventures.com/
+
+Count every keystroke:
+http://vimgolf.com/
+
+Tutorials:
+http://vimcasts.org/
+http://derekwyatt.org/vim/tutorials/
