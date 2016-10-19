@@ -213,5 +213,8 @@ nnoremap <silent> <leader>l :blast<CR>
 nmap <leader>z :set nu!<CR>
 
 " Aus der Zwischenablage einfügen - Vim mit F5 vorbereiten
-:set pastetoggle=<f5>
+:set pastetoggle=<F5>
+
+" Kopiere die Zeilen mit Suchergebnissen in einen neuen Buffer
+nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 
