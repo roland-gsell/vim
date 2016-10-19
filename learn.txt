@@ -1078,3 +1078,6 @@ http://vimgolf.com/
 Tutorials:
 http://vimcasts.org/
 http://derekwyatt.org/vim/tutorials/
+
+Historisches:
+http://www.catonmat.net/blog/why-vim-uses-hjkl-as-arrow-keys/
