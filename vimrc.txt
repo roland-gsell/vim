@@ -164,6 +164,10 @@ set showcmd
 " Veränderte Buffer automatisch auf hidden setzen
 set hidden
 
+" Standard-Suchverhalten anpassen
+set ignorecase
+set smartcase
+
 " Whitespace wird per default angezeigt
 set list
 
