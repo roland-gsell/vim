@@ -148,8 +148,18 @@ endfunction
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" " which is the default
+map Y y$
+
 " Einfache Expansion des Verzeichnisses der aktiven Datei
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Syntax Highlighting
+syntax on
+
+" Teilweise eingetippte Befehle in der letzten Zeile anzeigen
+set showcmd
 
 " Veränderte Buffer automatisch auf hidden setzen
 set hidden
