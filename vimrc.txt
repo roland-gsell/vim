@@ -218,3 +218,5 @@ nmap <leader>z :set nu!<CR>
 " Kopiere die Zeilen mit Suchergebnissen in einen neuen Buffer
 nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 
+" Für mehrere Suchmuster
+nnoremap <silent> <F4> :redir >>matches.tmp<CR>:g//<CR>:redir END<CR>:new matches.tmp<CR>
