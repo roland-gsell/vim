@@ -40,6 +40,8 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'tpope/vim-abolish'
 
+Plugin 'tpope/vim-fugitive'
+
 " Bundle 'scrooloose/nerdtree'
 
 " The bundles you install will be listed here
