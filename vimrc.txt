@@ -168,6 +168,10 @@ set hidden
 set ignorecase
 set smartcase
 
+" Kommandozeilenhöhe auf 2 setzen, damit man etwas seltener das hier sieht:
+" Betätigen Sie die EINGABETASTE oder geben Sie einen Befehl ein
+set cmdheight=2
+
 " Whitespace wird per default angezeigt
 set list
 
