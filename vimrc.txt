@@ -5,7 +5,8 @@
 " sudo apt-get install git
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "
-" Put .vimrc (this file) in Place (your home directory) ...
+" Rename vimrc.txt (this file) to .vimrc and place it in your home directory ...
+" source it or restart vim, then:
 "
 " :PluginInstall
 "
