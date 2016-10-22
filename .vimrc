@@ -82,7 +82,7 @@ set encoding=utf-8
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 
 " History auf 200 setzen - default ist nur 50
 " Die History wird ueber mehrere vim-Sessions hinweg gespeichert.
