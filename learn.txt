@@ -78,7 +78,8 @@ gk          eine Anzeigezeile nach oben
 g0          zum Anfang der Anzeigezeile
 ^           zum ersten nicht-leeren Zeichen der echten Zeile
 g^          zum ersten nicht-leeren Zeichen der Anzeigezeile
-$           zum Ende der echten Zeile
+$           zum Ende der echten Zeile (im visuellen Modus: inkl. New Line)
+g_          zum Ende der echten Zeile (im visuellen Modus: excl. New Line)
 g$          zum Ende der Anzeigezeile
 
 
