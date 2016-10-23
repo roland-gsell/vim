@@ -1,6 +1,28 @@
-=================
-VIM in der Praxis
-=================
+
+==================================================================================================
+
+888     888 8888888 888b     d888                                                                 
+888     888   888   8888b   d8888                                                                 
+888     888   888   88888b.d88888                                                                 
+Y88b   d88P   888   888Y88888P888                                                                 
+ Y88b d88P    888   888 Y888P 888                                                                 
+  Y88o88P     888   888  Y8P  888                                                                 
+   Y888P      888   888   "   888                                                                 
+    Y8P     8888888 888       888                                                                 
+                                                                                                  
+                                                                                                  
+                                                                                                  
+d8b                    888                       8888888b.                           d8b          
+Y8P                    888                       888   Y88b                          Y8P          
+                       888                       888    888                                       
+888 88888b.        .d88888  .d88b.  888d888      888   d88P 888d888 8888b.  888  888 888 .d8888b  
+888 888 "88b      d88" 888 d8P  Y8b 888P"        8888888P"  888P"      "88b `Y8bd8P' 888 88K      
+888 888  888      888  888 88888888 888          888        888    .d888888   X88K   888 "Y8888b. 
+888 888  888      Y88b 888 Y8b.     888          888        888    888  888 .d8""8b. 888      X88 
+888 888  888       "Y88888  "Y8888  888          888        888    "Y888888 888  888 888  88888P' 
+                                                                                                  
+==================================================================================================
+                                                                                                  
 
 
 vim -u NONE -N
@@ -964,6 +986,7 @@ ps -ef | grep kopano-spooler >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then 
 0f]a;j
 0f]a;
 
+
 Bestehende Makros ändern
 ------------------------
 
@@ -973,6 +996,9 @@ Zurück ins Register						0"ay$
 
 Achtung mit Tastencodes in Makros - etwa bei Tippfehlern. Diese können etwas irritierend sein. ;-)
 Backspace entspricht dem Code <80>kb
+
+Man kann dafür auch VimL verwenden - hier z.B. um ~ durch vU zu ersetzen:
+:let @a=substitute(@a, '\~', 'vU', 'g')
 
 
 Makros mit Zähler abspielen
@@ -1013,6 +1039,7 @@ Soll werden zu:
 2) Superman
 ...
  
+
 Iterator auswerten, um Elemente einer Liste zu nummerieren
 ----------------------------------------------------------
 
