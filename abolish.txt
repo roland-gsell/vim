@@ -1,0 +1,7 @@
+Der Mann biss den Hund
+
+Der MANN frisst immer brav auf.
+Der mann holt das Stöckchen.
+Der mANn ist ganz falsch geschrieben. :(
+
+%S/{Mann,Hund}/{Hund,Mann}/g
