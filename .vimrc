@@ -83,8 +83,8 @@ endfunction
 " Autocmd-Block {{{
 if has("autocmd")
     " Marker-Faltung aktivieren und alles einklappen
-    autocmd BufRead * setlocal foldmethod=marker
-    autocmd BufRead * normal zM
+    autocmd BufRead .vimrc setlocal foldmethod=marker
+    autocmd BufRead .vimrc normal zM
     "Filetype aktivieren
     filetype on
     autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
@@ -94,7 +94,8 @@ if has("autocmd")
         autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
         autocmd FileType python match Excess /\%120v.*/
         autocmd FileType python set nowrap
-        autocmd FileType python set foldmethod=syntax
+        autocmd FileType python setlocal foldmethod=indent
+        autocmd FileType python normal zR
         augroup END
     " rss und atom-Files wie XML behandeln
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
