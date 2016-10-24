@@ -1,5 +1,11 @@
-" 
-" INSTALLATION
+" einzelne Faltung öffnen:      zo
+" einzelne Faltung schließen:   zc
+" alle öffnen:                  zR
+" alle schließen:               zM
+
+set nocompatible
+
+" INSTALLATION {{{
 "
 " mkdir -p ~/.vim/bundle/Vundle.vim
 " sudo apt-get install git
@@ -15,18 +21,18 @@
 "
 " wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 " wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-" 
+"
 " mkdir -p ~/.config/fontconfig/conf.d
 " mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-" 
+"
 " xset q
 " sudo mv PowerlineSymbols.otf /usr/share/fonts/X11/misc/
 " fc-cache -vf /usr/share/fonts/X11/misc
-" 
+"
 " ... Restart terminal! ...
+" }}}
 
-set nocompatible
-
+"Plugins {{{
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -49,10 +55,37 @@ Plugin 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
-" The rest of your config follows here
+" }}}
 
+" Plugins direkt implementiert {{{
+" nelstrom/vim-visual-star-search
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+" nelstrom/vim-qargs
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+" }}}
+
+" Autocmd-Block {{{
 if has("autocmd")
+    " Marker-Faltung aktivieren und alles einklappen
+    autocmd BufRead * setlocal foldmethod=marker
+    autocmd BufRead * normal zM
+    "Filetype aktivieren
     filetype on
     autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
     augroup vimrc_autocmds
@@ -61,23 +94,24 @@ if has("autocmd")
         autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
         autocmd FileType python match Excess /\%120v.*/
         autocmd FileType python set nowrap
+        autocmd FileType python set foldmethod=syntax
         augroup END
     " rss und atom-Files wie XML behandeln
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
     " Python und Javascript von Leerraum-Zeichen am Ende der Zeilen befreien
     autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 endif
+" }}}
 
-" Airline Config
+" Airline Config {{{
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "ravenpower"
 set t_Co=256
 set encoding=utf-8
+" }}}
 
-" NerdTree
-" map <F2> :NERDTreeToggle<CR>
-
+" Config {{{
 " Standard-Einrückung
 set tabstop=4
 set softtabstop=4
@@ -101,62 +135,8 @@ set hlsearch
 " Zeilennummerierung einschalten:
 set number
 
-" Treffenhervorhebung temporär unterdrücken
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " Inkrementelle Suche aktivieren
 set incsearch
-
-" Für Anfänger: Cursortasten deaktivieren
-" noremap <Up> <Nop>
-" noremap <Down> <Nop>
-" noremap <Left> <Nop>
-" noremap <Right> <Nop>
-
-" nelstrom/vim-visual-star-search
-xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
-
-function! s:VSetSearch()
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
-  let @s = temp
-endfunction
-
-" nelstrom/vim-qargs
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
-nnoremap <silent> <F6> :call <SID>StripTrailingWhitespaces()<CR>
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-" Den &-Befehl reparieren (die Flags der letzten Substitution berücksichtigen)
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" " which is the default
-map Y y$
-
-" Einfache Expansion des Verzeichnisses der aktiven Datei
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Syntax Highlighting
 syntax on
@@ -180,14 +160,39 @@ set list
 
 " Listchars anpassen
 set listchars=tab:▸\ ,eol:¬
+" }}}
+
+" Farben {{{
+" Specialkey = Tab, NonText = EOL
 " highlight SpecialKey guifg=#4a4a59
 " highlight NonText guifg=#4a4a59
 highlight SpecialKey ctermfg=8
 highlight NonText ctermfg=8
-		
+
 " Suche mit hohem Kontrast
 highlight Search ctermbg=11, ctermfg=0
 
+" Suche mit hohem Kontrast
+highlight Folded ctermbg=10, ctermfg=0
+" }}}
+
+" Mappings {{{
+" Treffenhervorhebung temporär unterdrücken
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" Den &-Befehl reparieren (die Flags der letzten Substitution berücksichtigen)
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" " which is the default
+map Y y$
+
+" Einfache Expansion des Verzeichnisses der aktiven Datei
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" }}}
+
+" Leader Mappings {{{
 " Leader auf ö setzen:
 let mapleader="ö"
 
@@ -222,12 +227,40 @@ nnoremap <silent> <leader>l :blast<CR>
 
 " Zeilennummerierung hin- und herschalten
 nmap <leader>z :set nu!<CR>
+" }}}
 
-" Aus der Zwischenablage einfügen - Vim mit F5 vorbereiten
-:set pastetoggle=<F5>
-
+" Funktionstasten {{{
 " Kopiere die Zeilen mit Suchergebnissen in einen neuen Buffer
 nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 
 " Für mehrere Suchmuster
 nnoremap <silent> <F4> :redir >>matches.tmp<CR>:g//<CR>:redir END<CR>:new matches.tmp<CR>
+
+" Aus der Zwischenablage einfügen - Vim mit F5 vorbereiten
+:set pastetoggle=<F5>
+
+" Whitespace am Ende entfernen
+nnoremap <silent> <F6> :call <SID>StripTrailingWhitespaces()<CR>
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+" }}}
+
+" misc {{{
+" NerdTree
+" map <F2> :NERDTreeToggle<CR>
+
+" Für Anfänger: Cursortasten deaktivieren
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+" }}}
