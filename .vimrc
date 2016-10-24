@@ -174,6 +174,9 @@ highlight Search ctermbg=11, ctermfg=0
 
 " Suche mit hohem Kontrast
 highlight Folded ctermbg=10, ctermfg=0
+
+" Visual Mode
+highlight Visual ctermbg=9, ctermfg=0
 " }}}
 
 " Mappings {{{
