@@ -1069,19 +1069,30 @@ q
 
 Seite 207
 
+================
+Global Kommandos
+================
+
+:[range]g[lobal][!]/{pattern}/[cmd]
+
+Zeilen, die mit a oder g beginnen löschen:
+:g/\v^(a|g)/d
+
+Leere Zeilen löschen (Aquivalent zu awk 'NF'):
+:g/^$/d
+
+Alle Zeilen, die ein Wort enthalten um 3 Zeichen verkürzen:
+:g/\w$/normal $2Xx
 
 =====
 TIPPS
 =====
 
 Remote Edit:
-vim scp://remoteuser@server//absolute/path/to/document
+vim scp://remoteuser@server:port//absolute/path/to/document
 
 Strip Trailing Spaces:
 :%s/\s\+$//e
-
-Strip blank lines:
-:g/^$/d
 
 
 =====
