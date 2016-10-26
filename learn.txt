@@ -1107,5 +1107,9 @@ Tutorials:
 http://vimcasts.org/
 http://derekwyatt.org/vim/tutorials/
 
+Regex:
+http://www.regular-expressions.info/
+http://vimregex.com/
+
 Historisches:
 http://www.catonmat.net/blog/why-vim-uses-hjkl-as-arrow-keys/
