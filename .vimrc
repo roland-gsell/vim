@@ -204,8 +204,8 @@ let mapleader="ö"
 nmap <leader>w :set list!<CR>
 
 " Schnell runter und rauf
-nmap <leader>j Lzz
-nmap <leader>k Hzz
+nmap ä Lzz
+nmap ü Hzz
 
 " Leerzeilen in Normal Mode einfügen
 nmap <leader>ö o<Esc>

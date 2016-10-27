@@ -1,28 +1,28 @@
 
 ==================================================================================================
 
-888     888 8888888 888b     d888                                                                 
-888     888   888   8888b   d8888                                                                 
-888     888   888   88888b.d88888                                                                 
-Y88b   d88P   888   888Y88888P888                                                                 
- Y88b d88P    888   888 Y888P 888                                                                 
-  Y88o88P     888   888  Y8P  888                                                                 
-   Y888P      888   888   "   888                                                                 
-    Y8P     8888888 888       888                                                                 
-                                                                                                  
-                                                                                                  
-                                                                                                  
-d8b                    888                       8888888b.                           d8b          
-Y8P                    888                       888   Y88b                          Y8P          
-                       888                       888    888                                       
-888 88888b.        .d88888  .d88b.  888d888      888   d88P 888d888 8888b.  888  888 888 .d8888b  
-888 888 "88b      d88" 888 d8P  Y8b 888P"        8888888P"  888P"      "88b `Y8bd8P' 888 88K      
-888 888  888      888  888 88888888 888          888        888    .d888888   X88K   888 "Y8888b. 
-888 888  888      Y88b 888 Y8b.     888          888        888    888  888 .d8""8b. 888      X88 
-888 888  888       "Y88888  "Y8888  888          888        888    "Y888888 888  888 888  88888P' 
-                                                                                                  
+888     888 8888888 888b     d888
+888     888   888   8888b   d8888
+888     888   888   88888b.d88888
+Y88b   d88P   888   888Y88888P888
+ Y88b d88P    888   888 Y888P 888
+  Y88o88P     888   888  Y8P  888
+   Y888P      888   888   "   888
+    Y8P     8888888 888       888
+
+
+
+d8b                    888                       8888888b.                           d8b
+Y8P                    888                       888   Y88b                          Y8P
+                       888                       888    888
+888 88888b.        .d88888  .d88b.  888d888      888   d88P 888d888 8888b.  888  888 888 .d8888b
+888 888 "88b      d88" 888 d8P  Y8b 888P"        8888888P"  888P"      "88b `Y8bd8P' 888 88K
+888 888  888      888  888 88888888 888          888        888    .d888888   X88K   888 "Y8888b.
+888 888  888      Y88b 888 Y8b.     888          888        888    888  888 .d8""8b. 888      X88
+888 888  888       "Y88888  "Y8888  888          888        888    "Y888888 888  888 888  88888P'
+
 ==================================================================================================
-                                                                                                  
+
 
 
 vim -u NONE -N
@@ -306,7 +306,7 @@ gU2as
 EINFÜGE-MODUS
 =============
 
-<C-h>       Ein Zeichen zurück löschen (Backspace)  ┐ 
+<C-h>       Ein Zeichen zurück löschen (Backspace)  ┐
 <C-w>       Ein Wort zurück löschen                 ├─  funktioniert auch im Kommandozeilenmodus
 <C-u>       Bis zum Zeilenanfang zurück löschen     ┘
 
@@ -319,19 +319,19 @@ Beispiel: <C-o>zz
 
 
 Vim in der Praxis von Drew Neil
-Lesen Sie Drew Neils 
+Lesen Sie Drew Neils
 
 yfs jA <C-r>0 . <Esc>
 
-siehe auch :reg 
+siehe auch :reg
 
 Kleine Berechnungen vor Ort:
 
 Fa. Wimmer - Preisliste
 -----------------------
-6 Stühle für jeweils € 658, insgesamt   € 
+6 Stühle für jeweils € 658, insgesamt   €
 8 Tische für jeweils € 902, insgesamt   € 7216
-Summe                                   € 
+Summe                                   €
 
 A <C-r>= 6*658 >CR>
 
@@ -476,7 +476,7 @@ Das alte Testament nach Unix
 
 Am Anfang war ed. ed zeugte em, und em zeugte en, und en zeugte ex, und ex zeugte vi, und vi zeugte Vim.
 
-siehe: 
+siehe:
 practical-vim.html
 
 
@@ -933,12 +933,12 @@ Interaktion mit der Zwischenablage
 end
 
 
-1,2,3,4,5,6,7,8,9,10].each do |n| 
+1,2,3,4,5,6,7,8,9,10].each do |n|
   if n%5==0
       puts "fizz"
         else
             puts n
-              end 
+              end
               end
 
 
@@ -953,22 +953,22 @@ Makros
 ======
 
 
-Befehl			Wirkung
+Befehl          Wirkung
 -------------------------------------------------------------------------------
-q[a-z]			Aufnahme starten. Achtung! Dies überschreibt benannte Register!
-q				Aufnahme beenden, wenn sie gerade läuft
-@[a-z]			Befehlsfolge wieder abspielen
-@@				zuletzt verwendete Befehlsfolge wieder abspielen
-q[A-Z]			Etwas an eine bestehende Aufnahme anhängen
+q[a-z]          Aufnahme starten. Achtung! Dies überschreibt benannte Register!
+q               Aufnahme beenden, wenn sie gerade läuft
+@[a-z]          Befehlsfolge wieder abspielen
+@@              zuletzt verwendete Befehlsfolge wieder abspielen
+q[A-Z]          Etwas an eine bestehende Aufnahme anhängen
 
 
 Vorgehensweise
 --------------
 
 1) Cursorposition normalisieren
-	z.B. mit 0, n oder gg
+    z.B. mit 0, n oder gg
 2) Ziel mit wiederholbaren Bewegungen treffen
-	z.B. wortbasierte Bewegungen: w, b, e, ge oder f{Zeichen} oder Textobjekte nutzen
+    z.B. wortbasierte Bewegungen: w, b, e, ge oder f{Zeichen} oder Textobjekte nutzen
 
 
 Serielle Ausführung vs. Parallele Ausführung
@@ -991,9 +991,9 @@ ps -ef | grep kopano-spooler >> /var/log/kopanoalive.log ; if [ $? -eq 0 ] then 
 Bestehende Makros ändern
 ------------------------
 
-Inhalt anzeigen							:reg a
-Inhalt in eine neue Zeile einfügen		:put a
-Zurück ins Register						0"ay$
+Inhalt anzeigen                         :reg a
+Inhalt in eine neue Zeile einfügen      :put a
+Zurück ins Register                     0"ay$
 
 Achtung mit Tastencodes in Makros - etwa bei Tippfehlern. Diese können etwas irritierend sein. ;-)
 Backspace entspricht dem Code <80>kb
@@ -1016,13 +1016,13 @@ x = "("+a+","+b+","+c+","+d+","+e+","+f+")";
 Es wäre schön den Befehl ;. 11 Mal ausführen zu können. Nur wie?
 11;.
 ;11.
-		?? geht beides nicht
+        ?? geht beides nicht
 
 Lösung:
 qq;.q
 11@q
 So wird ;. 11 Mal ausgeführt!
-Man könnte hier z.B. auch 22 nehmen - das Makro bricht ohnehin ab, wenn es nichts mehr findet. 
+Man könnte hier z.B. auch 22 nehmen - das Makro bricht ohnehin ab, wenn es nichts mehr findet.
 Wer zählt schon gerne durch?
 
 Übung:
@@ -1039,7 +1039,7 @@ Soll werden zu:
 1) Doktor Manhattan
 2) Superman
 ...
- 
+
 
 Iterator auswerten, um Elemente einer Liste zu nummerieren
 ----------------------------------------------------------
@@ -1067,13 +1067,130 @@ I<C-r>=i<CR>) <Esc>
 q
 
 
-Seite 207
+=============================
+Vergleichsmuster und Literale
+=============================
+
+Groß- und Kleinschreibung ignorieren:
+:set ignorecase
+
+Wenn das Suchmuster Großbuchstaben enthält, kann ignorecase mit dieser Einstellung temporär deaktiviert werden:
+:set smartcase
+
+
+Viel Magie!
+-----------
+
+body    { color:    #3c3c3c; }
+a       { color:    #0000EE; }
+strong  { color:    #000; }
+
+Farbwerte finden:
+/#\([0-9a-fA-F]\{6}\|[0-9a-fA-F]\{3}\)
+
+Hier müssen viele Zeichen maskiert werden. Mit dem "very magic"-Schalter entfällt dies:
+/\v#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})
+
+Noch kürzer wird es mit Zeichenklassen:
+/\v#(\x{6}|\x{3})
+
+Siehe:
+:h character-classes
+
+
+Ohne Magie :-(
+--------------
+
+Die Taste N sucht daher rückwärts ..
+.. der Musterschalter \v (d.h. die sehr magische Suche) ..
+
+/d.h.
+findet auch "daher".
+Eine anschließende Ersetzung mit
+:%s//das heißt/g
+würde nicht zum gewünschten Ergebnis führen.
+
+Dies kann mit dem "very nomagic"-Schalter verhindert werden:
+/\Vd.h.
+
+Alles nach /\V wird (fast) genauso gesucht, wie es angegeben wird. 
+Es gibt leider auch hier Ausnahmen: 
+    der Backslash \
+    nur bei der Vorwärtssuche: der Slash /
+    nur bei der Rückwärtssuche: das Fragezeichen ?
+
+
+Doppelte Wörter finden
+----------------------
+
+Ich mag Paris während des
+des Frühlings.
+
+Dieser Regex-Ausdruck findet doppelte Wörter:
+/\v<(\w+)\_s+\1>
+
+<>      Wortraumgrenzen
+\_s     Leerraum-Zeichen
+\1      Referenzen auf gefundene Elemente
+
+
+Wortraumgrenzen
+---------------
+
+die Probleme mit diesen Rekruten sind, dass sie
+diese Anweisungen nicht umsetzen und diesem Befehl nicht folgen
+
+/die
+findet alles Mögliche ...
+
+/\v<die>
+findet tatsächlich nur das Wort "die"
+
+
+Suchergebnisse eingrenzen
+-------------------------
+
+Vim in der Praxis
+    soll ersetzt werden durch:
+Vim benötigt viel Praxis
+
+Suche:
+/Vim \zsin der\ze Praxis
+
+\zs     Beginn des Treffers
+\zs     Ende des Treffers
+
+Hier wird nichts gefunden:
+Man sagt, in der Kürze liegt die Würze.
+
+Nun kann ersetzt werden:
+:%s//benötigt viel/g
+
+Anderes Beispiel:
+/^\s*\zsif
+
+Findet ein "if" am Anfang und ignoriert den Whitespace davor.
+
+
+=====
+Suche
+=====
+
+Seite 223
 
 ================
 Global Kommandos
 ================
 
 :[range]g[lobal][!]/{pattern}/[cmd]
+
+------
+abbcbb
+------
+deefee
+------
+gaagbb
+------
 
 Zeilen, die mit a oder g beginnen löschen:
 :g/\v^(a|g)/d
