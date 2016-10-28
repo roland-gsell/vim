@@ -1071,6 +1071,9 @@ Beispiel:
 :vs
 2@:
 
+Makro in allen Buffern ausführen:
+:bufdo normal @a
+
 
 =============================
 Vergleichsmuster und Literale
