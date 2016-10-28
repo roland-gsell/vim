@@ -1066,6 +1066,11 @@ I<C-r>=i<CR>) <Esc>
 :let i += 1
 q
 
+Man kann auch spezielle Register als "Makro" ausführen.
+Beispiel:
+:vs
+2@:
+
 
 =============================
 Vergleichsmuster und Literale
@@ -1158,7 +1163,7 @@ Suche:
 /Vim \zsin der\ze Praxis
 
 \zs     Beginn des Treffers
-\zs     Ende des Treffers
+\ze     Ende des Treffers
 
 Hier wird nichts gefunden:
 Man sagt, in der Kürze liegt die Würze.
