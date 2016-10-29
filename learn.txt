@@ -1186,6 +1186,49 @@ Suche
 
 Seite 223
 
+
+======
+Listen
+======
+
+Change List
+-----------
+
+Befehl      Wirkung
+--------------------------------------------------
+:changes    Liste anzeigen
+g;          Zur vorherigen Änderung springen
+g,          Zur nächsten Änderung springen
+{n}g;       Zur Änderung mit der Nummer n springen
+
+
+Jump List
+---------
+
+Befehl      Wirkung
+------------------------------------------------------------------------------------
+:jumps      Liste anzeigen
+<C-o>       Liste rückwärts durchlaufen
+<C-i>       Liste vorwärts durchlaufen
+''          Zwischen dem letzen Jump und der aktuellen Position hin- und herspringen
+
+Kommandos, die einen Jump auslösen:
+',`,gg,G,/,?,n,N,%,(,),[[,]],{,},:s,:tag,L,M,H
+sowie alle Kommandos, die das Editieren eines neuen Files einleiten
+Siehe auch:
+:h jump-motions
+
+Beide Listen enthalten max. 100 Einträge.
+Jumpliste leeren:
+:let i = 0 | while i < 100 | mark ' | let i = i + 1 | endwhile
+
+Jumps ignorieren:
+:keepjumps
+Beispiele:
+:keepjumps normal 3G
+:keepjumps normal 75%
+
+
 ================
 Global Kommandos
 ================
