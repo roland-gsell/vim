@@ -237,7 +237,7 @@ Kurzform  | längere Variante
 ---------------------------
 C         | c$
 s         | cl
-S         | ^C
+S         | 0C
 I         | ^I
 A         | $a
 o         | A<CR>
