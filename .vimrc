@@ -49,9 +49,9 @@ Plugin 'tpope/vim-abolish'
 
 Plugin 'tpope/vim-fugitive'
 
-" Bundle 'scrooloose/nerdtree'
+Plugin 'tpope/vim-obsession'
 
-" The bundles you install will be listed here
+" Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on
 
