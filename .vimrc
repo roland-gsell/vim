@@ -192,6 +192,10 @@ xnoremap & :&&<CR>
 " " which is the default
 map Y y$
 
+" Schnell runter und rauf
+nmap ä Lzz
+nmap ü Hzz
+
 " Einfache Expansion des Verzeichnisses der aktiven Datei
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " }}}
@@ -203,15 +207,14 @@ let mapleader="ö"
 " Use <leader>w to toggle display of whitespace
 nmap <leader>w :set list!<CR>
 
-" Schnell runter und rauf
-nmap ä Lzz
-nmap ü Hzz
-
 " Leerzeilen in Normal Mode einfügen
 nmap <leader>ö o<Esc>
 
 " Zum alternativen Puffer springen
 nmap <leader>a <C-^>
+
+" Zur Marke und Spalte springen: (deutsche Keyboard ohne 'nodeadkeys')
+nmap <leader>m `
 
 " Treffen zählen
 nmap <leader>h :%s///gn<CR>
