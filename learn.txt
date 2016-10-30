@@ -181,18 +181,39 @@ Eine Position markieren und wieder zu ihr zurückkehren
 
 m{a-zA-Z}       markiert eine Position
 '{a-zA-Z}       springt zur Marke
+`{a-zA-Z}       springt zur Marke und zur Spalte
 
 Großbuchstaben: globale Marken!
 
 Die automatischen Marken in Vim:
 
-''      Die Position vor dem letzten Sprung in der aktuellen Datei
-'.      Die Position der letzten Änderung
-'^      Die Position der letzten Einfügung
-'[      Der Anfang der letzten Änderung oder Kopieraktion
-']      Das Ende der letzten Änderung oder Kopieraktion
-'<      Der Anfang der letzten visuellen Auswahl
-'>      Das Ende der letzten visuellen Auswahl
+'       Die Position vor dem letzten Sprung in der aktuellen Datei
+.       Die Position der letzten Änderung
+^       Die Position der letzten Einfügung
+[       Der Anfang der letzten Änderung oder Kopieraktion
+]       Das Ende der letzten Änderung oder Kopieraktion
+<       Der Anfang der letzten visuellen Auswahl
+>       Das Ende der letzten visuellen Auswahl
+0-9     Letzte Cursorposition beim Verlassen der Datei - mit 0 als der aktuellsten
+
+Marken anzeigen:
+:marks
+
+Bestimmte Marken anzeigen:
+:marks aB
+
+Verhindern, dass die Jump-Liste modifiziert wird:
+g'{a-zA-Z}
+g`{a-zA-Z}
+
+Marken löschen:
+:delmarks
+:delmarks A B c 1
+:delmarks a-d B-H 3-7
+:delmarks!
+
+Letzteres löscht alle (selbst definierten) Marken im aktuellen Buffer (= :delmarks a-z).
+
 
 Zwischen zueinandergehörigen Klammern hin- und herspringen:
 -----------------------------------------------------------
