@@ -820,15 +820,6 @@ Ex-Befehl           normaler Modus      Effekt
 
 Wenn man bei :tabmove das N wegläßt wird der Tab ans Ende verschoben, mit N=0 an den Anfang.
 
-Session speichern:
-:mksession {Dateiname}
-
-Wird der Dateiname weggelassen, wird Session.vim verwendet.
-Session wieder herstellen:
-:source {Dateiname}
-
-oder beim Start von vim:
-vim -S {Dateiname}
 
 Dateien in nicht vorhandenen Verzeichnissen abspeichern
 -------------------------------------------------------
@@ -842,6 +833,64 @@ Dateien in nicht vorhandenen Verzeichnissen abspeichern
 siehe auch:
 :h expand
 :echo expand('%:h')
+
+========
+SESSIONS
+========
+
+Es gibt Sessions und Views. 
+Views speichern nur Einstellungen für das lokale Fenster.
+
+View erstellen:
+:mkview [1-9|path]
+
+Ohne Parameter wird eine "unbenannte View" gespeichert.
+
+View wieder laden:
+:loadview [1-9]
+:source {path}
+
+Wird ein view file mit source geladen, dessen assoziiertes File nicht offen ist, wird Vim automatisch dieses File öffnen und im Vordergrund anzeigen.
+
+Übung:
+Zeilennummerierung an- oder abschalten: :set number / :set nonumber
+Statusbar ausblenden: :set laststatus=0
+:mkview ~/view-test.vim
+Datei ansehen und die Änderungen suchen.
+Vim neu laden und die View sourcen.
+
+Views gelten nur für das File, für das sie erstellt wurden.
+Will man eine View weiterverwenden, muss die Zeile, die 'edit' enthält, modifiziert werden. (üblicherweise Zeile 3)
+Die Statusleiste ist nicht Teil des Fensters - sie wird also nicht im View gespeichert. Dazu muss man eine Session erstellen:
+
+
+Session speichern:
+:mksession {Dateiname}
+
+Wird der Dateiname weggelassen, wird Session.vim verwendet.
+Mit :mksession! wird ein evtl. vorhandenes Session-File überschrieben.
+
+Session wieder herstellen:
+:source {Dateiname}
+
+oder beim Start von vim:
+vim -S {Dateiname}
+
+Übung:
+eigene Session.vim mit folgendem Inhalt erstellen
+
+cd ~/Desktop/session-test
+args *.txt
+edit foo.txt
+sp bar.txt
+vert sp baz.txt
+
+Probleme mit Sessions:
+Es werden auch Key-Mappings und globale Optionen mitgespeichert, die später beim Laden möglicherweise schon veraltet sind.
+
+Folgendes Plugin ist sehr empfehlenswert, um diese Probleme zu umgehen:
+obsession.vim
+https://github.com/tpope/vim-obsession
 
 
 =====================
