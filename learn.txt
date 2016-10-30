@@ -1356,6 +1356,9 @@ Tutorials:
 http://vimcasts.org/
 http://derekwyatt.org/vim/tutorials/
 
+Vimscript (VimL):
+http://learnvimscriptthehardway.stevelosh.com/
+
 Regex:
 http://www.regular-expressions.info/
 http://vimregex.com/
