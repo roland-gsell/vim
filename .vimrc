@@ -45,11 +45,27 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'tpope/vim-surround'
 
+" cs    Change Surrounding, z.B.: cs"'
+" ds    Delete Surrounding, z.B.: ds"
+" ys    Add Surrounding, z.B.: ysis"
+" S     Add Surrounding in visual selection
+" (     Mit Whitespace (gilt für alle Klammern)
+" )     Ohne Whitespace (gilt für alle Klammern)
+
 Plugin 'tpope/vim-abolish'
 
 Plugin 'tpope/vim-fugitive'
 
+" :Gdiff
+
 Plugin 'tpope/vim-obsession'
+
+Plugin 'tpope/vim-commentary'
+
+" gcc   Zeile auskommentieren (akzeptiert einen Count)
+" gc    (Visual Mode) Selektion auskommentieren
+" gc    (Normal Mode) Motion (z.B. Textobjekt) auskommentieren
+" gcu   Einen zusammenhängenden Kommentar-Block wieder einkommentieren
 
 " Bundle 'scrooloose/nerdtree'
 
