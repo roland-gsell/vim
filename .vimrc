@@ -206,11 +206,11 @@ xnoremap & :&&<CR>
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " " which is the default
-map Y y$
+noremap Y y$
 
 " Schnell runter und rauf
-nmap ä Lzz
-nmap ü Hzz
+nnoremap ä Lzz
+nnoremap ü Hzz
 
 " Einfache Expansion des Verzeichnisses der aktiven Datei
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -221,26 +221,26 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 let mapleader="ö"
 
 " Use <leader>w to toggle display of whitespace
-nmap <leader>w :set list!<CR>
+nnoremap <leader>w :set list!<CR>
 
 " Leerzeilen in Normal Mode einfügen
-nmap <leader>ö o<Esc>
+nnoremap <leader>ö o<Esc>
 
 " Zum alternativen Puffer springen
-nmap <leader>a <C-^>
+nnoremap <leader>a <C-^>
 
 " Zur Marke und Spalte springen: (deutsche Keyboard ohne 'nodeadkeys')
-nmap <leader>m `
+nnoremap <leader>m `
 
 " Treffen zählen
-nmap <leader>h :%s///gn<CR>
+nnoremap <leader>h :%s///gn<CR>
 
 " Neue Files im selben Verzeichnis öffnen:
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+noremap <leader>ew :e %%
+noremap <leader>es :sp %%
+noremap <leader>ev :vsp %%
+noremap <leader>et :tabe %%
 
 " Puffer schneller durchlaufen
 nnoremap <silent> <leader>n :bnext<CR>
@@ -249,7 +249,7 @@ nnoremap <silent> <leader>f :bfirst<CR>
 nnoremap <silent> <leader>l :blast<CR>
 
 " Zeilennummerierung hin- und herschalten
-nmap <leader>z :set nu!<CR>
+nnoremap <leader>z :set nu!<CR>
 " }}}
 
 " Funktionstasten {{{
@@ -279,7 +279,7 @@ endfunction
 
 " misc {{{
 " NerdTree
-" map <F2> :NERDTreeToggle<CR>
+" noremap <F2> :NERDTreeToggle<CR>
 
 " Für Anfänger: Cursortasten deaktivieren
 " noremap <Up> <Nop>
