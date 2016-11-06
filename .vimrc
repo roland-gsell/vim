@@ -190,6 +190,9 @@ set list
 set listchars=tab:▸\ ,eol:¬
 " }}}
 
+" Backspace soll so funktionieren wie in den meisten anderen Editoren
+set backspace=2
+
 " Farben {{{
 " Specialkey = Tab, NonText = EOL
 " highlight SpecialKey guifg=#4a4a59
