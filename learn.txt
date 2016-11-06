@@ -61,7 +61,11 @@ N       In die entgegengesetzte Richtung weitersuchen
 { / }   Zum Anfang des nächsten/vorigen Absatzes springen
 H/M/L   Zum oberen Rand / zur Mitte / zum unteren Rand des Bildschirms springen
 gf      Zu der unter dem Cursor angegebenen Datei springen
-'m/`m    Zu einer Marke springen
+'m/`m   Zu einer Marke springen
+<C-u>   ½ Seite nach oben, u für up
+<C-d>   ½ Seite nach unten, d für down
+<C-b>   1 Seite nach oben ( oder <PageUp> ), b für backwards
+<C-f>   1 Seite nach unten ( oder <PageDown> ), f für forwards
 
     In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist, the two existing as personalities independent and resenting of the other. Following his accidental exposure to gamma radiation during the detonation of an experimental bomb, Banner is physically transformed into the Hulk when subjected to emotional stress, at or against his will, often leading to destructive rampages and conflicts that complicate Banner's civilian life.
 
@@ -1342,6 +1346,9 @@ http://www.vim.org/
 
 Tipps & Tricks:
 http://vim.wikia.com/wiki/Vim_Tips_Wiki
+
+Cheat Sheet:
+http://vimcheatsheet.com
 
 Plugin-Sammlung + Installationsanleitungen für alle Plugin-Manager:
 http://vimawesome.com/
