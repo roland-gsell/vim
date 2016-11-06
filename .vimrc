@@ -30,6 +30,14 @@ set nocompatible
 " fc-cache -vf /usr/share/fonts/X11/misc
 "
 " ... Restart terminal! ...
+"
+" Syntax Checking für Python:
+" apt-get install python-pip
+" pip install flake8
+"
+" Testen mit:
+" flake8 test.py
+" 
 " }}}
 
 "Plugins {{{
@@ -69,6 +77,14 @@ Plugin 'tpope/vim-commentary'
 
 " Syntax Checker
 Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Fenster-Auswählen mit Minus
 Plugin 't9md/vim-choosewin'
@@ -188,10 +204,10 @@ set list
 
 " Listchars anpassen
 set listchars=tab:▸\ ,eol:¬
-" }}}
 
 " Backspace soll so funktionieren wie in den meisten anderen Editoren
 set backspace=2
+" }}}
 
 " Farben {{{
 " Specialkey = Tab, NonText = EOL
@@ -208,6 +224,10 @@ highlight Folded ctermbg=10, ctermfg=0
 
 " Visual Mode
 highlight Visual ctermbg=9, ctermfg=0
+
+" Syntastic Fehler
+highlight SpellBad ctermbg=5, ctermfg=7
+
 " }}}
 
 " Mappings {{{
