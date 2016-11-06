@@ -67,6 +67,17 @@ Plugin 'tpope/vim-commentary'
 " gc    (Normal Mode) Motion (z.B. Textobjekt) auskommentieren
 " gcu   Einen zusammenhängenden Kommentar-Block wieder einkommentieren
 
+" Syntax Checker
+Plugin 'scrooloose/syntastic'
+
+" Fenster-Auswählen mit Minus
+Plugin 't9md/vim-choosewin'
+nnoremap  -  :ChooseWin<CR>
+let g:choosewin_overlay_enable = 1
+
+" Bookmarks
+" Plugin 'mattesgroeger/vim-bookmarks'
+
 " Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on
@@ -207,10 +218,6 @@ xnoremap & :&&<CR>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " " which is the default
 noremap Y y$
-
-" Schnell runter und rauf
-nnoremap ä Lzz
-nnoremap ü Hzz
 
 " Einfache Expansion des Verzeichnisses der aktiven Datei
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
