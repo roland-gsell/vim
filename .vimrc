@@ -91,6 +91,9 @@ Plugin 't9md/vim-choosewin'
 nnoremap  -  :ChooseWin<CR>
 let g:choosewin_overlay_enable = 1
 
+"Colorschemes
+Plugin 'flazz/vim-colorschemes'
+
 " Bookmarks
 " Plugin 'mattesgroeger/vim-bookmarks'
 
@@ -210,23 +213,22 @@ set backspace=2
 " }}}
 
 " Farben {{{
+colorscheme moonshine
 " Specialkey = Tab, NonText = EOL
-" highlight SpecialKey guifg=#4a4a59
-" highlight NonText guifg=#4a4a59
-highlight SpecialKey ctermfg=8
-highlight NonText ctermfg=8
+" highlight SpecialKey ctermfg=8
+" highlight NonText ctermfg=8
 
-" Suche mit hohem Kontrast
-highlight Search ctermbg=11, ctermfg=0
+" " Suche mit hohem Kontrast
+" highlight Search ctermbg=11, ctermfg=0
 
-" Suche mit hohem Kontrast
-highlight Folded ctermbg=10, ctermfg=0
+" " Suche mit hohem Kontrast
+" highlight Folded ctermbg=10, ctermfg=0
 
-" Visual Mode
-highlight Visual ctermbg=9, ctermfg=0
+" " Visual Mode
+" highlight Visual ctermbg=9, ctermfg=0
 
-" Syntastic Fehler
-highlight SpellBad ctermbg=5, ctermfg=7
+" " Syntastic Fehler
+" highlight SpellBad ctermbg=5, ctermfg=7
 
 " }}}
 
