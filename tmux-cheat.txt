@@ -15,3 +15,7 @@ Attachen:                   tmux attach -t 0
 Detach:                     <P>d
 
 Session rename:             <P>$
+
+Copy mode:                  <P>[
+Copy mode: (alternativ)     <P>:copy-mode
+Copy mode verlassen:        <Esc>
