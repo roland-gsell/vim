@@ -1,0 +1,17 @@
+Prefix (<P>):               <C-b>
+
+Neues Fenster:              <P>c
+Fenster vert. splitten:     <P>"
+Fenster horiz. splitten:    <P>%
+Zw. Panes hin- und her:     <P>o
+
+Zum nächsten Fenster:       <P>n
+Zum vorherigen Fenster:     <P>p
+
+Sessions auflisten:         tmux ls
+in tmux:                    <P>:list-sessions
+
+Attachen:                   tmux attach -t 0
+Detach:                     <P>d
+
+Session rename:             <P>$
