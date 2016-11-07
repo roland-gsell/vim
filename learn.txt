@@ -842,7 +842,7 @@ siehe auch:
 SESSIONS
 ========
 
-Es gibt Sessions und Views. 
+Es gibt Sessions und Views.
 Views speichern nur Einstellungen für das lokale Fenster.
 
 View erstellen:
@@ -1195,8 +1195,8 @@ würde nicht zum gewünschten Ergebnis führen.
 Dies kann mit dem "very nomagic"-Schalter verhindert werden:
 /\Vd.h.
 
-Alles nach /\V wird (fast) genauso gesucht, wie es angegeben wird. 
-Es gibt leider auch hier Ausnahmen: 
+Alles nach /\V wird (fast) genauso gesucht, wie es angegeben wird.
+Es gibt leider auch hier Ausnahmen:
     der Backslash \
     nur bei der Vorwärtssuche: der Slash /
     nur bei der Rückwärtssuche: das Fragezeichen ?
