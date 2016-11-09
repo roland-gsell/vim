@@ -1,3 +1,18 @@
+\v\/\=+\\\_s+\zs(\w+\_s+)+\ze\\
+
+- MIT BEWEGUNGEN IN DATEIEN NAVIGIEREN
+- NORMALER MODUS
+- EINFÜGE-MODUS
+- VISUELLER MODUS
+- KOMMANDOZEILEN-MODUS
+- MEHRERE DATEIEN VERWALTEN
+- SESSIONS
+- KOPIEREN UND EINFÜGEN
+- Makros
+- Vergleichsmuster und Literale
+- Listen
+- Global Kommandos
+- LINKS
 
 ==================================================================================================
 
@@ -43,9 +58,9 @@ vim --version
                 Zeigt mit welchen Optionen vim kompiliert wurde.
 
 
-====================================
+/==================================\
 MIT BEWEGUNGEN IN DATEIEN NAVIGIEREN
-====================================
+\==================================/
 
 h,j,k,l
 
@@ -229,9 +244,9 @@ console.log([{'a':1},{'b':2}])
 f(%h%l%
 
 
-==============
+/============\
 NORMALER MODUS
-==============
+\============/
 
 
 
@@ -327,9 +342,9 @@ Link also enters this mode when attacked by wandering monsters. Whenever the pla
 
 gU2as
 
-=============
+/===========\
 EINFÜGE-MODUS
-=============
+\===========/
 
 <C-h>       Ein Zeichen zurück löschen (Backspace)  ┐
 <C-w>       Ein Wort zurück löschen                 ├─  funktioniert auch im Kommandozeilenmodus
@@ -404,9 +419,9 @@ oder: gr
 behandelt Tabulatorzeichen als beständen sie aus Leerzeilen. Sprich: er überschreibt Bildschirmzeichen.
 
 
-===============
+/=============\
 VISUELLER MODUS
-===============
+\=============/
 
 v       zeichenbasierter visueller Modus
 V       zeilenbasierter visueller Modus
@@ -492,9 +507,9 @@ var i = 2
 <C-v>3j$A;<Esc>
 
 
-====================
+/==================\
 KOMMANDOZEILEN-MODUS
-====================
+\==================/
 
 Das alte Testament nach Unix
 ----------------------------
@@ -718,9 +733,9 @@ UUID="bec10561-9ab1-4f81-9e18-6fc3c1be14e1"     /mnt/share      ext4    errors=r
 :r!blkid /dev/sda1 | cut -d '"' -f 2
 
 
-=========================
+/=======================\
 MEHRERE DATEIEN VERWALTEN
-=========================
+\=======================/
 
 Die meisten Vim-Befehle operieren auf Puffern, nur einige wenige operieren auf Dateien, u.a. die Befehle
 :write, :update, :saveas
@@ -838,9 +853,9 @@ siehe auch:
 :h expand
 :echo expand('%:h')
 
-========
+/======\
 SESSIONS
-========
+\======/
 
 Es gibt Sessions und Views.
 Views speichern nur Einstellungen für das lokale Fenster.
@@ -897,9 +912,9 @@ obsession.vim
 https://github.com/tpope/vim-obsession
 
 
-=====================
+/===================\
 KOPIEREN UND EINFÜGEN
-=====================
+\===================/
 
 
 Vi min der Praxis
@@ -1022,9 +1037,9 @@ end
 :set pastetoggle=<f5>
 
 
-======
+/====\
 Makros
-======
+\====/
 
 
 Befehl          Wirkung
@@ -1149,9 +1164,9 @@ Makro in allen Buffern ausführen:
 :bufdo normal @a
 
 
-=============================
+/===========================\
 Vergleichsmuster und Literale
-=============================
+\===========================/
 
 Groß- und Kleinschreibung ignorieren:
 :set ignorecase
@@ -1254,16 +1269,16 @@ Anderes Beispiel:
 Findet ein "if" am Anfang und ignoriert den Whitespace davor.
 
 
-=====
+/===\
 Suche
-=====
+\===/
 
 Seite 223
 
 
-======
+/====\
 Listen
-======
+\====/
 
 Change List
 -----------
@@ -1303,9 +1318,9 @@ Beispiele:
 :keepjumps normal 75%
 
 
-================
+/==============\
 Global Kommandos
-================
+\==============/
 
 :[range]g[lobal][!]/{pattern}/[cmd]
 
@@ -1326,9 +1341,9 @@ Leere Zeilen löschen (Aquivalent zu awk 'NF'):
 Alle Zeilen, die ein Wort enthalten um 3 Zeichen verkürzen:
 :g/\w$/normal $2Xx
 
-=====
+/===\
 TIPPS
-=====
+\===/
 
 Remote Edit:
 vim scp://remoteuser@server:port//absolute/path/to/document
@@ -1337,9 +1352,9 @@ Strip Trailing Spaces:
 :%s/\s\+$//e
 
 
-=====
+/===\
 LINKS
-=====
+\===/
 
 Die Hauptseite:
 http://www.vim.org/
