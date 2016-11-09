@@ -1,24 +1,32 @@
 
+- Titel eins
 - Titel drei
 - Titel zwei
 - Titel eins
 /#<CR>wy$ggo- <Esc>p<C-o>
+/###jy$ggo- pn
 
-## Titel eins
+####
+Titel eins
+####
 
 Hier steht der erste Absatz.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 
-## Titel zwei
+####
+Titel zwei
+####
 
 Und es geht weiter
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
 
-## Titel drei
+####  
+Titel drei
+####  
 
 Auch hier gibts was interessantes.
 Other motions, like j for moving down a line, won't add entries to the jump list. This means you can use jump commands strategically -- if you find yourself switching between two lines that are far apart, jumps are useful, but if you want to deviate slightly from these positions then other motions can be useful to avoid adding more entries to the jump list.
