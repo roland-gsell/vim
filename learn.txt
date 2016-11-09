@@ -1,18 +1,30 @@
-\v\/\=+\\\_s+\zs(\w+\_s+)+\ze\\
+MIT BEWEGUNGEN IN DATEIEN NAVIGIEREN
+NORMALER MODUS
+EINFÜGE-MODUS
+VISUELLER MODUS
+KOMMANDOZEILEN-MODUS
+MEHRERE DATEIEN VERWALTEN
+SESSIONS
+KOPIEREN UND EINFÜGEN
+Makros
+Vergleichsmuster und Literale
+Suche
+Listen
+Global Kommandos
+TIPPS
+LINKS
 
-- MIT BEWEGUNGEN IN DATEIEN NAVIGIEREN
-- NORMALER MODUS
-- EINFÜGE-MODUS
-- VISUELLER MODUS
-- KOMMANDOZEILEN-MODUS
-- MEHRERE DATEIEN VERWALTEN
-- SESSIONS
-- KOPIEREN UND EINFÜGEN
-- Makros
-- Vergleichsmuster und Literale
-- Listen
-- Global Kommandos
-- LINKS
+
+Suchmuster:
+\v\/\=+\\\_s\zs([A-Za-zÖÜÄöüä\-]+\_s+)+\ze\\
+Makro a:
+/\v\/\=+\\\_s\zs([A-Za-zÖÜÄöüä\-]+\_s+)+\ze\\yyggP
+15@a
+:let i=0
+Makro b:
+15G:.m=i:let i += 1
+15@b
+
 
 ==================================================================================================
 
