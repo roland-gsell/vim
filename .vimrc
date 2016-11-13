@@ -210,6 +210,9 @@ set listchars=tab:▸\ ,eol:¬
 
 " Backspace soll so funktionieren wie in den meisten anderen Editoren
 set backspace=2
+
+" Zeile des Cursors anzeigen
+set cursorline
 " }}}
 
 " Farben {{{
