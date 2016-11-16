@@ -6,11 +6,11 @@ KOMMANDOZEILEN-MODUS
 MEHRERE DATEIEN VERWALTEN
 SESSIONS
 KOPIEREN UND EINFÜGEN
-Makros
-Vergleichsmuster und Literale
-Suche
-Listen
-Global Kommandos
+MAKROS
+VERGLEICHSMUSTER UND LITERALE
+SUCHE
+LISTEN
+GLOBAL KOMMANDOS
 TIPPS
 LINKS
 
@@ -865,6 +865,24 @@ siehe auch:
 :h expand
 :echo expand('%:h')
 
+
+/=====\
+DIFFING
+\=====/
+
+Befehl              Aktion
+------------------------------------------------------------------------------
+do                  geänderten Block aus zweiter Datei holen ("diff optain") *
+dp                  geänderten Block in zweite Datei schreiben ("diff put") *
+:[range]diffget     nur die angegebene Range schreiben **
+:[range]diffput     nur die angegebene Range holen **
+zi                  Faltung ab- oder abschalten, entspricht :set foldenable!
+diffu[pdate]        Diff-Anzeige aktualisieren
+
+*   funktioniert ausschließlich im 2-Way-Diff
+**  funktioniert auch im 3-Way-Diff, dann wird allerdings noch ein "Buffer Identifier" erwartet.
+
+
 /======\
 SESSIONS
 \======/
@@ -1050,7 +1068,7 @@ end
 
 
 /====\
-Makros
+MAKROS
 \====/
 
 
@@ -1177,7 +1195,7 @@ Makro in allen Buffern ausführen:
 
 
 /===========================\
-Vergleichsmuster und Literale
+VERGLEICHSMUSTER UND LITERALE
 \===========================/
 
 Groß- und Kleinschreibung ignorieren:
@@ -1282,14 +1300,14 @@ Findet ein "if" am Anfang und ignoriert den Whitespace davor.
 
 
 /===\
-Suche
+SUCHE
 \===/
 
 Seite 223
 
 
 /====\
-Listen
+LISTEN
 \====/
 
 Change List
@@ -1331,7 +1349,7 @@ Beispiele:
 
 
 /==============\
-Global Kommandos
+GLOBAL KOMMANDOS
 \==============/
 
 :[range]g[lobal][!]/{pattern}/[cmd]
