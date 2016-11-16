@@ -397,6 +397,7 @@ Hexcode für den gesamten Unicode Basic Multilingual Plane:
 Backtick: <C-v>096
 
 ♪♫
+← ↓ ↑ →
 
 Herausfinden welchen Code ein Zeichen im Text hat:
 ga
@@ -879,9 +880,22 @@ dp                  geänderten Block in zweite Datei schreiben ("diff put") *
 :[range]diffput     nur die angegebene Range holen **
 zi                  Faltung ab- oder abschalten, entspricht :set foldenable!
 diffu[pdate]        Diff-Anzeige aktualisieren
+]c                  zur nächsten Änderung springen
+[c                  zur vorherigen Änderung springen
+:TOhtml             HTML-Version der Änderungen erzeugen
 
 *   funktioniert ausschließlich im 2-Way-Diff
 **  funktioniert auch im 3-Way-Diff, dann wird allerdings noch ein "Buffer Identifier" erwartet.
+
+Schönere Farben für vimdiff (Beispiel) → in die .vimrc
+
+fun! SetDiffColors()
+    highlight DiffAdd       cterm=bold ctermfg=white ctermbg=DarkGreen
+    highlight DiffDelete    cterm=bold ctermfg=white ctermbg=DarkGrey
+    highlight DiffChange    cterm=bold ctermfg=white ctermbg=DarkBlue
+    highlight DiffText      cterm=bold ctermfg=white ctermbg=DarkRed
+endfun
+autocmd FilterWritePre * call SetDiffColors()
 
 
 /======\
