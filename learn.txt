@@ -4,6 +4,7 @@ EINFÜGE-MODUS
 VISUELLER MODUS
 KOMMANDOZEILEN-MODUS
 MEHRERE DATEIEN VERWALTEN
+DIFFING
 SESSIONS
 KOPIEREN UND EINFÜGEN
 MAKROS
@@ -19,11 +20,11 @@ Suchmuster:
 \v\/\=+\\\_s\zs([A-Za-zÖÜÄöüä\-]+\_s+)+\ze\\
 Makro a:
 /\v\/\=+\\\_s\zs([A-Za-zÖÜÄöüä\-]+\_s+)+\ze\\yyggP
-15@a
+16@a
 :let i=0
 Makro b:
-15G:.m=i:let i += 1
-15@b
+16G:.m=i:let i += 1
+16@b
 
 
 ==================================================================================================
