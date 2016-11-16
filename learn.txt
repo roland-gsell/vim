@@ -897,6 +897,9 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 
+Aktivieren mit :diffthis in allen zu vergleichenden Fenstern, oder mit :windo diffthis
+Noch schneller geht es mit "vimdiff file01 file02" von der Bash aus.
+
 
 /======\
 SESSIONS
