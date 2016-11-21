@@ -1393,6 +1393,13 @@ Alle Zeilen, die ein Wort enthalten um 3 Zeichen verkürzen:
 TIPPS
 \===/
 
+Vim-File "exportieren" (Stichwort: Syntax Highlighting):
+:hardcopy > file.ps
+:!ps2pdf file.ps
+
+Oder:
+:TOhtml
+
 Remote Edit:
 vim scp://remoteuser@server:port//absolute/path/to/document
 
