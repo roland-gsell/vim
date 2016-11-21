@@ -37,7 +37,7 @@ set nocompatible
 "
 " Testen mit:
 " flake8 test.py
-" 
+"
 " }}}
 
 "Plugins {{{
@@ -216,7 +216,8 @@ set cursorline
 " }}}
 
 " Farben {{{
-colorscheme moonshine
+colorscheme jellybeans
+" colorscheme moonshine
 " Specialkey = Tab, NonText = EOL
 " highlight SpecialKey ctermfg=8
 " highlight NonText ctermfg=8
