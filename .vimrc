@@ -311,6 +311,8 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+nnoremap <silent> <F7> :set nu!<CR>:set list!<CR>
 " }}}
 
 " misc {{{
