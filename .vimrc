@@ -33,7 +33,9 @@ set nocompatible
 "
 " Syntax Checking für Python:
 " apt-get install python-pip
-" pip install flake8
+" sudo pip install --upgrade pip
+" sudo pip install setuptools
+" sudo pip install flake8
 "
 " Testen mit:
 " flake8 test.py
