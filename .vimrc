@@ -1,7 +1,8 @@
-" einzelne Faltung öffnen:      zo
-" einzelne Faltung schließen:   zc
-" alle öffnen:                  zR
-" alle schließen:               zM
+" einzelne Faltung öffnen:          zo
+" einzelne Faltung schließen:       zc
+" alle öffnen:                      zR
+" alle schließen:                   zM
+" alle öffnen/schließen (toggle):   zi
 
 set nocompatible
 
