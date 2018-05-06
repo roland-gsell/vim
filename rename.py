@@ -1,5 +1,6 @@
 import os
 import platform
+import collections
 
 
 def creation_date(path_to_file):
@@ -15,13 +16,17 @@ def creation_date(path_to_file):
             return stat.st_mtime
 
 
-mypath = '/home/roland/git/rename'
+mypath = '/home/roland/git/vim'
 f = []
 for (dirpath, dirnames, filenames) in os.walk(mypath):
     f.extend(filenames)
     break
 
+l = {}
 for item in f:
-    print(item, ': ', creation_date(item))
+    print(creation_date(item), ': ', item)
+    l.update({creation_date(item): item})
 
+ol = collections.OrderedDict(sorted(l.items()))
 print(str(f))
+print(str(ol))
