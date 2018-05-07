@@ -16,17 +16,18 @@ def creation_date(path_to_file):
             return stat.st_mtime
 
 
-mypath = '/home/roland/git/vim'
-f = []
+mypath = '/home/roland/git/rename'
+files = []
 for (dirpath, dirnames, filenames) in os.walk(mypath):
-    f.extend(filenames)
+    files.extend(filenames)
     break
 
-l = {}
-for item in f:
+filelist = {}
+for item in files:
+    item = mypath + os.sep + item
     print(creation_date(item), ': ', item)
-    l.update({creation_date(item): item})
+    filelist.update({creation_date(item): item})
 
-ol = collections.OrderedDict(sorted(l.items()))
-print(str(f))
-print(str(ol))
+ordered_filelist = collections.OrderedDict(sorted(filelist.items()))
+print(str(files))
+print(str(ordered_filelist))
