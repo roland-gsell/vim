@@ -9,7 +9,7 @@ echo "Checking if curl is already installed"
 dpkg -s curl 2>&1 >/dev/null
 if [[ $? == 1 ]]; then
     echo "Curl needs to be installed."
-    apt install curl 2>&1 >/dev/null
+    apt install curl
 else
     echo "Curl is installed."
 fi
@@ -22,7 +22,7 @@ echo "Checking if git is already installed"
 dpkg -s git 2>&1 >/dev/null
 if [[ $? == 1 ]]; then
     echo "Git needs to be installed."
-    apt install git 2>&1 >/dev/null
+    apt install git
 else
     echo "Git is installed."
 fi
@@ -48,7 +48,7 @@ if [[ $? == 1 ]]; then
         ucr set repository/online/unmaintained='yes'
         apt update 2>&1 >/dev/null
     fi
-    apt install python-pip 2>&1 >/dev/null
+    apt install python-pip
 else
     echo "Python-pip is installed."
 fi
