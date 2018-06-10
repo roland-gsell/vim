@@ -14,3 +14,12 @@ lxc-start -n web1 -d                # web2, db1
 lxc-attach -n web1
 
 apt install python-minimal --no-install-recommends
+
+
+# Back on Ansible Master:
+mkdir ~/ansible
+cd ~/ansible
+vim ansible.cfg
+
+[defaults]
+host_key_checking = False
