@@ -1,0 +1,16 @@
+apt install git
+git clone https://github.com/ansible/ansible
+cd ansible
+git submodule update --init --recursive
+apt install python-jinja2 python-paramiko python-yaml sshpass
+source ./hacking/env-setup
+
+which ansible
+
+apt install lxc
+lxc-create -t ubuntu -n web1        # web2, db1
+lxc-ls --fancy
+lxc-start -n web1 -d                # web2, db1
+lxc-attach -n web1
+
+apt install python-minimal --no-install-recommends
