@@ -17,6 +17,24 @@ apt install python-minimal --no-install-recommends
 
 
 # Back on Ansible Master:
+
+# lxc stuff:
+man 5 lxc.container.conf
+vi /var/lib/lxc/web1/config
+
+lxc.net.0.ipv4.address = 10.0.3.100/24 10.0.3.255
+lxc.net.0.ipv4.gateway = auto
+lxc.start.auto = 1
+lxc.start.delay = 15
+lxc.start.order = 10
+
+# then inside the container:
+vi /etc/network/interfaces
+# or
+vi /etc/netplan
+# and disable dhcp (just comment the dhcp line out or set it to false)
+# now back to ansible:
+
 mkdir ~/ansible
 cd ~/ansible
 vim ansible.cfg
