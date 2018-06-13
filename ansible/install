@@ -13,7 +13,7 @@ lxc-ls --fancy
 lxc-start -n web1 -d                # web2, db1
 lxc-attach -n web1
 
-apt install python-minimal --no-install-recommends
+apt install python-minimal python-pip --no-install-recommends
 
 
 # Back on Ansible Master:
@@ -45,6 +45,18 @@ network:
         addresses: [1.1.1.1,8.8.8.8]
   version: 2
 # -------------------
+
+# now log in as root and copy the ssh key to every machine
+lxc-attach -n machine_name
+passwd
+vi /etc/ssh/sshd_config
+    PermitRootLogin yes
+service sshd restart
+ssh-copy-id 10.0.3.100
+vi /etc/ssh/sshd_config
+    PermitRootLogin prohibit-password
+service sshd restart
+
 # now back to ansible:
 
 mkdir ~/ansible
@@ -53,3 +65,22 @@ vim ansible.cfg
 
 [defaults]
 host_key_checking = False
+
+vim inventory
+
+[allservers]
+10.0.3.100
+10.0.3.101
+10.0.3.102
+
+[web]
+10.0.3.100
+10.0.3.101
+
+[database]
+10.0.3.102
+
+ansible all -i inventory -m ping
+ansible web -i inventory -a "apt update"
+ansible web -i inventory -a "apt -y install nginx"
+ansible web -i inventory -m service -a "name=nginx state=started"
