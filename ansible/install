@@ -33,6 +33,9 @@ vi /etc/network/interfaces
 # or
 vi /etc/netplan
 # in case of netplan disable dhcp and add dns servers:
+vi /etc/netplan/10-lxc.yaml
+# or from lxc master:
+vi /var/lib/lxc/servername/rootfs/etc/netplan/10-lxc.yaml
 # -------------------
 network:
   ethernets:
