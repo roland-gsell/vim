@@ -2,7 +2,7 @@ apt install git
 git clone https://github.com/ansible/ansible
 cd ansible
 git submodule update --init --recursive
-apt install python-jinja2 python-paramiko python-yaml sshpass
+pip install -r requirements.txt
 source ./hacking/env-setup
 
 which ansible
