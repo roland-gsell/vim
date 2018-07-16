@@ -9,6 +9,8 @@ which ansible
 
 apt install lxc
 lxc-create -t ubuntu -n web1        # web2, db1
+# if it fails and fallback to debian repository:
+# apt install ubuntu-archive-keyring
 lxc-ls --fancy
 lxc-start -n web1 -d                # web2, db1
 lxc-attach -n web1
